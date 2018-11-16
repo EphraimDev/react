@@ -1,0 +1,45 @@
+footer {
+    background: #379E34;
+    color: #ffffff;
+    font-weight: bold;
+}
+.footer-width {
+    width: 50%
+}
+footer a {
+    color: #ffffff;
+    float: left;
+    margin-left: 20px;
+    padding: .4rem
+}
+.footer-body a {
+    float: right
+}
+footer a:hover {
+    text-decoration: none;
+    color: #FC0707
+}
+
+@media only screen and (max-device-width: 768px) {
+    .footer-logo {
+        width: 40% !important;
+        padding-left: 4px !important;
+    }
+    .footer-logo h3, .footer-body h3 {
+        font-size: 1.2rem
+    }
+    footer a {
+        margin-left: 0;
+        padding-left: 0;
+    }
+    .footer-body {
+        width: 50% !important;
+    }
+    .fixed-bottom .padding {
+        padding-left: 5px;
+        padding-right: 5px
+    }
+    .padding .row {
+        margin-left: -5px
+    }
+}

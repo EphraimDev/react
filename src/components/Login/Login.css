@@ -1,0 +1,92 @@
+body {
+    background: #C4C4C4 !important;
+    color: #ffffff !important;
+    font-family: 'Poppins', sans-serif !important;
+}
+.form {
+    margin-left: 25%;
+    margin-top: 5% 
+}
+.col-6 h2 {
+    text-align: left;
+    color: #ffffff !important;
+    font-size: 350% !important
+}
+.position-relative label {
+    font-size: 2rem ;
+    font-weight: 400
+}
+.form-group input {
+    background: #379E34;
+    height: calc(3rem + 5px) !important;
+    padding: .375rem .75rem;
+    font-size: 2rem;
+    line-height: 2;
+}
+.form-group input:focus {
+    background: #379E34;
+}
+.form-check-input {
+    width: 2em;
+    height: 2em;
+    margin-right: 5px !important
+}
+.form-check-label {
+    margin-left: 1em;
+    font-size: 2rem;
+    font-weight: 400
+}
+.button-green {
+    background-color: #97cc76;
+    background-image: linear-gradient(to bottom, #97cc76, #8bcc62);
+    border: 1px solid #5f993a;
+    box-shadow: inset 0 1px 0 #c6e6b3, inset 0 -1px 0 #79b356, inset 0 0 0 1px #a4cc8b, 0 2px 4px rgba(0, 0, 0, 0.2);
+    color: white;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+    font-size: 2em !important
+  }
+  .button-green:hover, .button-green:focus {
+    background: #8bcc62 !important;
+    border-color: #326612 !important;
+    box-shadow: inset 0 1px 0 #c6e6b3, inset 0 -1px 0 #79b356, inset 0 0 0 1px #a4cc8b !important;
+  }
+  .button-green:active {
+    background: #8bcc62 !important;
+    box-shadow: inset 0 2px 3px rgba(0, 0, 0, 0.2) !important;
+  }
+.nav-link {
+    text-align: center;
+    text-decoration: none;
+    color: #ffffff;
+}
+.nav-link:hover {
+    color: #FC0707
+}
+
+@media only screen and (max-device-width: 768px) {
+    .form {
+        margin-left: 0;
+        max-width: 100% !important
+    }
+    .col-md-8 h2 {
+        font-size: 2rem !important
+    }
+    .position-relative label {
+        font-size: 1.5rem
+    }
+    .form-group input {
+        height: calc(2.5rem + 5px) !important;
+    }
+    .form-check {
+        padding-left: 0 !important
+    }
+    .form-check-input {
+        width: 1.5em;
+        height: 1.5em;
+    }
+    .position-relative .nav-link {
+        font-size: 1.5rem !important;
+        font-weight: 400
+    }
+
+}

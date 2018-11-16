@@ -1,0 +1,45 @@
+.confirm-order {
+    width: 60%;
+    margin-left: 20%;
+    margin-top: 5%;
+    border: 1px #379E34 solid;
+}
+.confirm-order .title {
+    font-size: 200%;
+    text-align: center;
+    border-bottom: 1px #379E34 solid;
+    font-weight: bold;
+    padding: 5px;
+    color: #379E34
+}
+.confirm-order p {
+    font-size: 170%;
+    text-align: center
+}
+.confirm-order .buttons {
+    text-align: center
+}
+.confirm-order button, .payment-options button {
+    color: #379E34;
+    font-size: 150%;
+    border-radius: 5px;
+    font-weight: 600
+}
+.payment-options button{
+    font-size: 100%
+}
+.confirm-order button:hover, .payment-options button:hover {
+    color: #ffffff;
+    background: #379E34
+}
+.payment-options {
+    text-align: center;
+    margin-top: 5%;
+    width: 70%;
+    margin-left: 15%;
+    font-size: 170%;
+    color: #000000
+}
+.payment-options h6{
+    font-size: 150% !important
+}

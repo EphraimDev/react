@@ -1,0 +1,36 @@
+#articles a {
+    color: black;
+    font-size: 200%
+}
+#articles a:hover{
+    color: #379e34
+}
+.articles-con .col-12 h5{
+    text-align: left;
+    color: #379e34
+}
+.sub-container{
+    margin-top: 20px
+}
+.admin-articles{
+    margin-left: 10%
+}
+.articles-con {
+    margin-top: 30px
+}
+.readArticle {
+    width: 90%;
+    margin-left: 5%;
+    margin-top: 5%
+}
+.readArticle p {
+    font-size: 200%
+}
+.readArticle .update-article a {
+    font-size: 150%;
+    color: #379e34;
+    padding: 10px
+}
+.update-article a:hover {
+    color: #ffffff
+}
