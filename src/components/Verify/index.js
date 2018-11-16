@@ -31,6 +31,7 @@ handleSubmit(e) {
         'Content-Type': 'application/json',
         'Authorization': localStorage.getItem('x-access-token')
       }),
+      mode: 'no-cors',
       body: JSON.stringify(data)
     });
 

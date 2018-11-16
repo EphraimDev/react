@@ -10,10 +10,11 @@ export default class UserName extends React.Component {
     componentDidMount() {
         let userId = localStorage.getItem('current-user-id');
 
-        const request = new Request(`http://localhost:2000/api/v1/user/${userId}`, {
+        const request = new Request(`https://ephaig-web.herokuapp.com/api/v1/user/${userId}`, {
                 headers: new Headers({
                 'Authorization': localStorage.getItem('x-access-token')
             }),
+            mode: 'no-cors'
         });
 
         fetch(request)

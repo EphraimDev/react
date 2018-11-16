@@ -19,6 +19,7 @@ export default class UserName extends React.Component {
                 headers: new Headers({
                 'Authorization': localStorage.getItem('x-access-token')
             }),
+            mode: 'no-cors'
         });
     
         fetch(request)

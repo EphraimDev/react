@@ -26,6 +26,7 @@ export default class Login extends React.Component {
     const request = new Request('https://ephaig-web.herokuapp.com/v1/login', {
         method: 'POST',
         headers: new Headers({'Content-Type': 'application/json'}),
+        mode: 'no-cors',
         body: JSON.stringify(data)
       });
 

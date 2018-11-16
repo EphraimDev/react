@@ -31,6 +31,7 @@ export default class Example extends React.Component {
       const request = new Request('https://ephaig-web.herokuapp.com/api/v1/contact-us', {
         method: 'POST',
         headers: new Headers({'Content-Type': 'application/json'}),
+        mode: 'no-cors',
         body: JSON.stringify(data)
       });
 

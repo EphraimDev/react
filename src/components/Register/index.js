@@ -32,8 +32,9 @@ export default class Register extends React.Component {
         method: 'POST',
         headers: new Headers({
           'Content-Type': 'application/json',
-          'Authorization': localStorage.getItem('x-access-token')
+          'Authorization': localStorage.getItem('x-access-token'),
         }),
+        mode: 'no-cors',
         body: JSON.stringify(data)
       });
 
