@@ -33,6 +33,7 @@ export default class Login extends React.Component {
       fetch(request)
         .then(res => res.json())
         .then(data => {
+          console.log(data);
           if(data.authUser.email === 'admin@wizzyagro.com') {
             this.setState({errorMessage: ""});
             const token = `${data.token}`;
