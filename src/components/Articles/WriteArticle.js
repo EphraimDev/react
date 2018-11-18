@@ -29,7 +29,9 @@ export default class Example extends React.Component {
       let formData = new FormData();
       formData.append('image', img);
       formData.append('title', this.state.title);
-      formData.append('article', this.state.article)
+      formData.append('article', this.state.article);
+
+      console.log(formData)
 
       const request = new Request('https://ephaig-web.herokuapp.com/api/v1/article', {
         method: 'POST',
@@ -42,13 +44,14 @@ export default class Example extends React.Component {
 
       fetch(request)
       .then(data => {
+        console.log(data);
           this.setState({
             title: '',
             image: '',
             article: '',
             errorMessage: ''
           });
-          document.location.replace('/admin');
+          //document.location.replace('/admin');
       })
         .catch(err => {
           console.log(err);
