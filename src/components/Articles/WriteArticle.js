@@ -45,13 +45,18 @@ export default class Example extends React.Component {
       fetch(request)
       .then(data => {
         console.log(data);
+        if(data.message !== 'Successful') {
+          return this.setState({
+            errorMessage: 'Please try again'
+          })
+        }
           this.setState({
             title: '',
             image: '',
             article: '',
             errorMessage: ''
           });
-          //document.location.replace('/admin');
+          document.location.replace('/admin');
       })
         .catch(err => {
           console.log(err);
@@ -65,9 +70,11 @@ export default class Example extends React.Component {
     }
   }
   render() {
+    let errorMessage = this.state.errorMessage;
     return (
       <Form className="contact-form" encType="multipart/form-data" >
         <div><h3>Write An Article</h3></div>
+        <span>{errorMessage}</span>
         <FormGroup>
             <Label for="name">Title</Label>
             <Input onChange={evt => this.handleChange(evt)} type="text" name="title" id="name" />
