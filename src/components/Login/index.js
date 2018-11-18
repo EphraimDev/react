@@ -23,7 +23,7 @@ export default class Login extends React.Component {
       password: target.password
     }
 
-    const request = new Request('https://ephaig-web.herokuapp.com/v1/login', {
+    const request = new Request('https://ephaig-web.herokuapp.com/api/v1/login', {
         method: 'POST',
         headers: new Headers({'Content-Type': 'application/json'}),
         mode: 'no-cors',
@@ -48,12 +48,6 @@ export default class Login extends React.Component {
           }
           if(data.message === 'Invalid Credentials') {
             return this.setState({errorMessage: 'Invalid Credentials'});
-          }
-          if(data.message === 'Please confirm your email to login') {
-            alert('Please confirm your email to login');
-            setTimeout(() => {
-              document.location.replace(`/verify-user`);
-            }, 100);
           }
           else {
             this.setState({errorMessage: ""});

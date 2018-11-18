@@ -32,7 +32,6 @@ export default class Register extends React.Component {
         method: 'POST',
         headers: new Headers({
           'Content-Type': 'application/json',
-          'Authorization': localStorage.getItem('x-access-token'),
         }),
         mode: 'no-cors',
         body: JSON.stringify(data)
@@ -48,7 +47,7 @@ export default class Register extends React.Component {
           return this.setState({errorMessage: "Crosscheck your data"});
         } else {
           setTimeout(() => {
-            document.location.replace(`/verify-user`);
+            document.location.replace(`/`);
           }, 200);
         }
       })
