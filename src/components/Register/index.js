@@ -46,9 +46,17 @@ export default class Register extends React.Component {
         if(!data.success) {
           return this.setState({errorMessage: "Crosscheck your data"});
         } else {
-          setTimeout(() => {
-            document.location.replace(`/`);
-          }, 200);
+          this.setState({errorMessage: ""});
+            const token = `${data.token}`;
+            const userId = `${data.authUser.userId}`;
+            const firstname = `${data.authUser.firstname}`;
+            const lastname = `${data.authUser.lastname}`;
+            localStorage.setItem('current-user-id', userId);
+            localStorage.setItem('x-access-token', token);
+            localStorage.setItem('firstname', firstname);
+            localStorage.setItem('lastname', lastname);
+            
+            document.location.replace(`/user/${userId}`)
         }
       })
         .catch(err => {
