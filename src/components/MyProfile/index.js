@@ -34,7 +34,7 @@ export default class Register extends React.Component {
             'Content-Type': 'application/json',
             'Authorization': localStorage.getItem('x-access-token')
         }),
-        mode: 'no-cors',
+        mode: 'cors',
         body: JSON.stringify(data)
       });
 

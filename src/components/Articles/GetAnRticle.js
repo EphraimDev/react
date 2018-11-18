@@ -17,7 +17,7 @@ export default class Example extends React.Component {
 
     let title = pathway.params.title;
 
-    const request = new Request(`http://localhost:2000/api/v1/article/${title}`);
+    const request = new Request(`https://ephaig-web.herokuapp.com/api/v1/article/${title}`);
 
     fetch(request)
     .then(res => res.json())

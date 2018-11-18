@@ -31,11 +31,12 @@ export default class Example extends React.Component {
       formData.append('title', this.state.title);
       formData.append('article', this.state.article)
 
-      const request = new Request('http://localhost:2000/api/v1/article', {
+      const request = new Request('https://ephaig-web.herokuapp.com/api/v1/article', {
         method: 'POST',
         headers: new Headers({
           'Authorization': localStorage.getItem('x-access-token'),
         }),
+        mode: 'cors',
         body: formData
       });
 

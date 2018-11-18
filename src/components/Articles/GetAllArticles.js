@@ -9,7 +9,7 @@ export default class UserName extends React.Component {
     
     
     componentDidMount() {
-        const request = new Request(`http://localhost:2000/api/v1/articles`);
+        const request = new Request(`https://ephaig-web.herokuapp.com/api/v1/articles`);
     
         fetch(request)
         .then(res => res.json())
