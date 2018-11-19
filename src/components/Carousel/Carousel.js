@@ -11,20 +11,20 @@ const items = [
   {
     src: 'https://i.imgur.com/OowbGyX.jpg',
     altText: 'Wizzy Agro',
-    captionTitle: 'WizzyAgro Farms',
-    captionText: 'Feeding Nations'
+    captionTitle: 'COMPANY NAME',
+    captionText: 'MOTTO'
   },
   {
     src: 'https://i.imgur.com/S7IPpnK.jpg',
     altText: 'Wizzy Agro',
-    captionTitle: 'WizzyAgro Farms',
-    captionText: 'Feeding Nations'
+    captionTitle: 'COMPANY NAME',
+    captionText: 'MOTTO'
   },
   {
     src: 'https://i.imgur.com/4LxhKiH.jpg',
     altText: 'Wizzy Agro',
-    captionTitle: 'WizzyAgro Farms',
-    captionText: 'Feeding Nations'
+    captionTitle: 'COMPANY NAME',
+    captionText: 'MOTTO'
   }
 ];
 

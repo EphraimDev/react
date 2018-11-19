@@ -62,68 +62,12 @@ export default class Header extends React.Component {
     return (
       <div>
         <Navbar light expand="md">
-          <NavbarBrand href="/"><img className="logo" src={logo} alt="" /></NavbarBrand>
+          <NavbarBrand href="/"><a className="logo" href="/">COMPANY LOGO</a>/></NavbarBrand>
           <NavbarToggler onClick={this.toggle} />
           <Collapse isOpen={this.state.isOpen} navbar>
             <Nav className="ml-auto" navbar>
-              <UncontrolledDropdown nav inNavbar >
-                <DropdownToggle nav >
-                  <div >Crops</div>
-                </DropdownToggle>
-                <DropdownMenu right>
-                  <DropdownItem>
-                    <NavLink href="/banana">Banana Plantation</NavLink>
-                  </DropdownItem>
-                  <DropdownItem>
-                    <NavLink href="/pepper" >Pepper Farming</NavLink>
-                  </DropdownItem>
-                  <DropdownItem>
-                    <NavLink href="/garri" >Garri Production</NavLink>
-                  </DropdownItem>
-                  <DropdownItem>
-                    <NavLink href="/oilpalm" >Oil Palm Production</NavLink>
-                  </DropdownItem>
-                  <DropdownItem>
-                    <NavLink href="/orange" >Orange Farming</NavLink>
-                  </DropdownItem>
-                  <DropdownItem>
-                    <NavLink href="/pawpaw" >Pawpaw Farming</NavLink>
-                  </DropdownItem>
-                  <DropdownItem>
-                    <NavLink href="/plantain" >Plantain Plantation</NavLink>
-                  </DropdownItem>
-                </DropdownMenu>
-              </UncontrolledDropdown>
-              <UncontrolledDropdown nav inNavbar >
-                <DropdownToggle nav >
-                  <div >Animals</div>
-                </DropdownToggle>
-                <DropdownMenu right>
-                  <DropdownItem>
-                    <NavLink href="/snail-rearing">Snail Rearing</NavLink>
-                  </DropdownItem>
-                  <DropdownItem>
-                    <NavLink href="/snail-feed" >Snail Feed Production</NavLink>
-                  </DropdownItem>
-                  <DropdownItem>
-                    <NavLink href="/rabbits" >Rabbit Rearing</NavLink>
-                  </DropdownItem>
-                  <DropdownItem>
-                    <NavLink href="/goats" >Goat Rearing</NavLink>
-                  </DropdownItem>
-                  <DropdownItem>
-                    <NavLink href="/poultry" >Poultry</NavLink>
-                  </DropdownItem>
-                </DropdownMenu>
-              </UncontrolledDropdown>
               <NavItem>
                 <NavLink href="/articles">Articles</NavLink>
-              </NavItem>
-              <NavItem>
-                <NavLink href="/about">About</NavLink>
-              </NavItem>
-              <NavItem>
-                <NavLink href="/contact">Contact</NavLink>
               </NavItem>
               <NavItem className="not-logged" >
                 <NavLink href="/login" >Login</NavLink>

@@ -11,7 +11,7 @@ const Cards = (props) => {
           <CardImg top width="100%" src="https://i.imgur.com/tFCqcHL.jpg" alt="Home Delivery" />
         </CardBody>
         <CardBody>
-          <CardLink href="/home-delivery">Home Delivery</CardLink>
+          <CardLink href="/">Home Delivery</CardLink>
           </CardBody>
       </Card>
   );

@@ -11,7 +11,7 @@ const CardOne = (props) => {
           <CardImg top width="100%" src="https://i.imgur.com/eQEUyNl.jpg" alt="banana" />
         </CardBody>
         <CardBody>
-          <CardLink href="/crops">Crop Production</CardLink>
+          <CardLink href="/">Crop Production</CardLink>
           </CardBody>
       </Card>
   );

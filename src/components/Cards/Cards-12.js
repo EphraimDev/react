@@ -11,7 +11,7 @@ const Cards = (props) => {
           <CardImg top width="100%" src="https://i.imgur.com/qIZrt71.png" alt="Investment" />
         </CardBody>
         <CardBody>
-          <CardLink href="/investment-opportunity">Investors Corner</CardLink>
+          <CardLink href="/">Investors Corner</CardLink>
           </CardBody>
       </Card>
   );
