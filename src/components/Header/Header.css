@@ -10,6 +10,8 @@ nav {
     padding-left: 0 !important;
     float: left;
     width: 200px;
+    font-size: 250% !important;
+    color: #ffffff !important
 }
 
 .navbar-nav a {

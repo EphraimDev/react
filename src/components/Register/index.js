@@ -40,6 +40,7 @@ export default class Register extends React.Component {
       fetch(request)
       .then(res => res.json())
       .then(data => {
+        console.log(data);
         if(data.message === 'Password must have at least 8 characters, a upper case letter, a number and a special character'){
           return this.setState({errorMessage: 'Password must have at least 8 characters, a upper case letter, a number and a special character'})
         }
@@ -48,9 +49,9 @@ export default class Register extends React.Component {
         } else {
           this.setState({errorMessage: ""});
             const token = `${data.token}`;
-            const userId = `${data.authUser.userId}`;
-            const firstname = `${data.authUser.firstname}`;
-            const lastname = `${data.authUser.lastname}`;
+            const userId = `${data.userId}`;
+            const firstname = `${data.firstname}`;
+            const lastname = `${data.lastname}`;
             localStorage.setItem('current-user-id', userId);
             localStorage.setItem('x-access-token', token);
             localStorage.setItem('firstname', firstname);

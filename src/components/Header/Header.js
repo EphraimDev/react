@@ -11,7 +11,7 @@ import {
   DropdownToggle,
   DropdownMenu,
   DropdownItem } from 'reactstrap';
-import logo from '../../logo/w.png';
+//import logo from '../../logo/w.png';
 import icon from '../../icons/profile.png';
 import './Header.css';
 
@@ -62,7 +62,7 @@ export default class Header extends React.Component {
     return (
       <div>
         <Navbar light expand="md">
-          <NavbarBrand href="/"><a className="company-logo" href="/">COMPANY LOGO</a>/></NavbarBrand>
+          <NavbarBrand href="/">COMPANY LOGO</NavbarBrand>
           <NavbarToggler onClick={this.toggle} />
           <Collapse isOpen={this.state.isOpen} navbar>
             <Nav className="ml-auto" navbar>
