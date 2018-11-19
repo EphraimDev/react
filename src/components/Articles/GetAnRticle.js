@@ -39,9 +39,9 @@ export default class Example extends React.Component {
         article = this.state.article;
     return (
         <div className="readArticle" >
-            <div><h5>{title}</h5></div>
-            <div><img src={image} alt={title} /></div>
-            <div><p>{article}</p></div>
+            <div className='article-body'><h5>{title}</h5></div>
+            <div className='article-body'><img src={image} alt={title} /></div>
+            <div className='article-body'><p>{article}</p></div>
             <div className="update-article" ><a href={`/update/${title}`} >Update</a><a href={`/delete/${title}`} >Delete</a></div>
         </div>
     );
