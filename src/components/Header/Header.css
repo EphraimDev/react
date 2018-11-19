@@ -5,42 +5,57 @@ nav {
     padding: 0 !important;
     margin-bottom: 0 !important
 }
+
 .navbar-brand {
     padding-left: 0 !important;
     float: left;
     width: 200px;
 }
-.navbar-nav a{
+
+.navbar-nav a {
     color: #ffffff !important
 }
+
 .nav-link {
     font-size: 170% !important;
 }
+
 .navbar-nav .nav-item {
     margin-left: 10px
 }
+
 .hover:hover {
     cursor: pointer;
 }
+
 .header-profile-icon {
     height: 1.5em;
     padding: 0 1rem 0 0;
 }
+
 .dropdown-menu {
     background-color: #379E34 !important
 }
+
 .dropdown-menu .dropdown-item:hover {
     background-color: #379E34 !important
 }
+
 .dropdown-menu .nav-link:hover {
     color: #c4c4c4 !important;
 }
+
 .logo {
     width: 500px;
     height: 200px;
     margin-top: -70px;
     margin-left: -150px
+}
 
+.company-logo {
+    width: 50%;
+    color: #ffffff;
+    font-size: 200%
 }
 
 @media only screen and (max-device-width: 768px) {
