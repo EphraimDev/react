@@ -50,7 +50,11 @@ export default class Login extends React.Component {
               return document.location.replace(`/admin`)
           }
           if(data.message === 'Invalid Credentials') {
-            return this.setState({errorMessage: 'Login details is incorrect'});
+            return this.setState({
+              errorMessage: 'Login details is incorrect',
+              email: '',
+              password: ''
+            });
           }
           else {
             this.setState({errorMessage: ""});
@@ -68,6 +72,11 @@ export default class Login extends React.Component {
         })
         .catch(err => {
           console.log(err);
+          return this.setState({
+            errorMessage: 'Login was not successful, kindly try again',
+            email: '',
+            password: ''
+          });
         })
   }
 
@@ -75,7 +84,9 @@ export default class Login extends React.Component {
     console.log('Component has mounted');
   }
   render() {
-    let errorMessage = this.state.errorMessage;
+    let errorMessage = this.state.errorMessage,
+    email = this.state.email,
+    password = this.state.password;
     return (
       <div>
         <Form className="form col-6" >
@@ -83,11 +94,11 @@ export default class Login extends React.Component {
           <span>{errorMessage}</span>
         <FormGroup>
           <Label for="email">Email</Label>
-          <Input type="email" onChange={evt => this.handleChange(evt)} name="email" id="email" placeholder="" required />
+          <Input type="email" value={email} onChange={evt => this.handleChange(evt)} name="email" id="email" placeholder="" required />
         </FormGroup> 
         <FormGroup>
           <Label for="password">Password</Label>
-          <Input type="password" onChange={evt => this.handleChange(evt)} name="password" id="password" placeholder="" required />
+          <Input type="password" value={password} onChange={evt => this.handleChange(evt)} name="password" id="password" placeholder="" required />
         </FormGroup>
         <Row form>
           <Col md={6}> 

@@ -44,10 +44,21 @@ export default class Register extends React.Component {
       .then(data => {
         document.getElementById("loader").style.display = "none";
         if(data.message === 'Password must have at least 8 characters, a upper case letter, a number and a special character'){
-          return this.setState({errorMessage: 'Password must have at least 8 characters, a upper case letter, a number and a special character'})
+          return this.setState({errorMessage: 'Password must have at least 8 characters, a upper case letter, a number and a special character',
+          firstname: '',
+          lastname: '',
+          email: '',
+          password: ''
+        })
         }
         if(!data.success) {
-          return this.setState({errorMessage: "Crosscheck your data"});
+          document.getElementById("loader").style.display = "none";
+          return this.setState({errorMessage: "Crosscheck your data",
+          firstname: '',
+          lastname: '',
+          email: '',
+          password: ''
+        });
         } else {
           this.setState({errorMessage: ""});
             const token = `${data.token}`;
@@ -74,26 +85,32 @@ export default class Register extends React.Component {
 
 
   render() {
-    let errorMessage = this.state.errorMessage;
+    let errorMessage = this.state.errorMessage,
+    firstname = this.state.firstname,
+    lastname = this.state.lastname,
+    email = this.state.email,
+    password = this.state.password
+    ;
     return (
-      <Form className="form col-6" >
+      <div>
+        <Form className="form col-6" >
         <h2>Register Now</h2>
         <span>{errorMessage}</span>
         <FormGroup>
           <Label for="firstname">First Name</Label>
-          <Input onChange={evt => this.handleChange(evt)} type="text" name="firstname" id="firstName"  required />
+          <Input onChange={evt => this.handleChange(evt)} type="text" name="firstname" id="firstName" value={firstname} required />
         </FormGroup>
         <FormGroup>
           <Label for="lastname">Last Name</Label>
-          <Input onChange={evt => this.handleChange(evt)} type="text" name="lastname" id="lastName" required />
+          <Input onChange={evt => this.handleChange(evt)} type="text" name="lastname" id="lastName" value={lastname} required />
         </FormGroup>
         <FormGroup>
           <Label for="email">Email</Label>
-          <Input onChange={evt => this.handleChange(evt)}  type="email" name="email" id="email" required />
+          <Input onChange={evt => this.handleChange(evt)}  type="email" name="email" id="email" value={email} required />
         </FormGroup>
         <FormGroup>
           <Label for="password">Password</Label>
-          <Input onChange={evt => this.handleChange(evt)} type="password" name="password" id="password" required />
+          <Input onChange={evt => this.handleChange(evt)} type="password" name="password" id="password" value={password} required />
         </FormGroup> 
         <FormGroup check>
           <Input onChange={evt => this.handleChange(evt)} type="checkbox" name="check" id="check"/>
@@ -107,7 +124,9 @@ export default class Register extends React.Component {
             </FormGroup>
           </Col>
         </Row>
-      </Form> 
+      </Form>
+      <div id="loader" style={{display:"none"}}></div>
+      </div>
     );
   }
 }
