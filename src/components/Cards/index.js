@@ -3,9 +3,7 @@ import React from 'react';
 import './Cards.css';
 import Crops from './Crops';
 import Animals from './Animals';
-import CardTen from './Cards-10';
-import CardEleven from './Cards-11';
-import CardTwelve from './Cards-12';
+import Training from './Training';
 
 const Cards = (props) => {
     return (
@@ -18,13 +16,7 @@ const Cards = (props) => {
                 <Animals />
             </div>
             <div className="col-sm-4 cards">   
-                <CardTen />
-            </div>
-            <div className="col-sm-4 cards">
-                <CardEleven />
-            </div>
-            <div className="col-sm-4 cards">
-                <CardTwelve />
+                <Training />
             </div>
         </div>
     );

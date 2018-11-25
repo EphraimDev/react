@@ -28,7 +28,12 @@ import UpdateArticle from './Pages/UpdateArticle';
 import NewOrder from './Pages/OrderProduce';
 import UpdateOrder from './Pages/UpdateOrder';
 import DeleteOrder from './Pages/DeleteOrder';
-import ConfirmOrder from './Pages/ConfirmOrder'
+import ConfirmOrder from './Pages/ConfirmOrder';
+import Crops from './Pages/Crop';
+import Animals from './Pages/Animal';
+import Consultancy from './Pages/Consultancy';
+
+require('dotenv').config();
 
 class App extends Component {
 
@@ -67,6 +72,9 @@ class App extends Component {
           <Route path="/:orderId/update" component={UpdateOrder} />
           <Route path="/:orderId/delete" component={DeleteOrder} />
           <Route path="/confirm-order" component={ConfirmOrder} />
+          <Route path="/crop production" component={Crops} />
+          <Route path="/animal rearing" component={Animals} />
+          <Route path="/training and consultancy" component={Consultancy} />
         </Fragment>
       </BrowserRouter>
       

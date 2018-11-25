@@ -1,0 +1,21 @@
+.consultancy {
+    margin-top: 15px
+}
+
+.consultancy h5 {
+    font-size: 200% !important;
+    color: #007bff !important
+}
+
+.consultancy li {
+    font-size: 150% !important;
+    margin-top: 2%
+}
+
+.consultancy a {
+    color: #379e34
+}
+
+.consultancy a:hover {
+    color: red
+}

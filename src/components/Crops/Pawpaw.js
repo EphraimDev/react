@@ -1,8 +1,6 @@
 import React from 'react';
 import { Card, CardImg, CardLink, CardBody,
-  } from 'reactstrap';
- 
-import './Cards.css';  
+  } from 'reactstrap'; 
 
 const Cards = (props) => {
   return (

@@ -1,20 +1,18 @@
 import React from 'react';
 import { Card, CardImg, CardLink, CardBody,
   } from 'reactstrap';
- 
-import './Cards.css';  
 
-const Cardfive = (props) => {
+const Cards = (props) => {
   return (
       <Card>
         <CardBody>
-          <CardImg top width="100%" src="https://i.imgur.com/CGeTokH.jpg" alt="Orange" />
+          <CardImg top width="100%" src="https://i.imgur.com/0vzGqh8.jpg" alt="Snail" />
         </CardBody>
         <CardBody>
-          <CardLink href="/orange">Orange Farming</CardLink>
+          <CardLink href="/rabbit">Rearing of rabbit</CardLink>
           </CardBody>
       </Card>
   );
 };
 
-export default Cardfive;
+export default Cards;

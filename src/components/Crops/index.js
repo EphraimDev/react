@@ -1,37 +1,38 @@
 import React from 'react';
 
 import '../Cards/Cards.css';
-import CardOne from './Cards-1';
-import CardTwo from './Cards-2';
-import CardThree from './Cards-3';
-import Cardfour from './Cards-4';
-import Cardfive from './Cards-5';
-import CardSix from './Cards-6';
-import CardSeven from './Cards-7';
+import Banana from './Banana';
+import Pepper from './Pepper';
+import Plantain from './Plantain';
+import Garri from './Garri';
+import OilPalm from './OilPalm';
+import Orange from './Orange';
+import Pawpaw from './Pawpaw';
 
 const Cards = (props) => {
     return (
         <div className="row sections" style={{maxWidth: '100%'}}>
+            <div className="crops-title col-sm-12"><h4>Crop Services We Offer</h4></div>
             <div className="col-sm-4 cards">
-                <CardOne />
+                <Banana />
             </div>
             <div className="col-sm-4 cards">
-                <CardTwo />
+                <Pepper />
             </div>
             <div className="col-sm-4 cards">
-                <CardThree />
+                <Plantain />
             </div>
             <div className="col-sm-4 cards">
-                <Cardfour />
+                <Garri />
             </div>
             <div className="col-sm-4 cards">
-                <Cardfive />
+                <OilPalm />
             </div>
             <div className="col-sm-4 cards">
-                <CardSix />
+                <Orange />
             </div>
             <div className="col-sm-4 cards">
-                <CardSeven />
+                <Pawpaw />
             </div>
         </div>
     );

@@ -8,10 +8,10 @@ const Cards = (props) => {
   return (
       <Card>
         <CardBody>
-          <CardImg top width="100%" src="https://i.imgur.com/0vzGqh8.jpg" alt="Snail" />
+          <CardImg top width="100%" src="https://i.imgur.com/qIZrt71.png" alt="Investment" />
         </CardBody>
         <CardBody>
-          <CardLink href="/snail-feed">Snail Feed Production</CardLink>
+          <CardLink href="/investors corner">Secure your future by choosing to invest in the fastest growing economy and watch your money grow</CardLink>
           </CardBody>
       </Card>
   );

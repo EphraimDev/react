@@ -1,0 +1,32 @@
+.features {
+    margin-left: 8%;
+    margin-right: 8%;
+    padding: 0 !important;
+    border: 1px solid #ffffff;
+}
+
+.features .card {
+    background-color: #ffffff !important
+}
+
+.row {
+    margin-right: 0 !important;
+    margin-left: 0 !important
+}
+
+.features h5 {
+    font-size: 200% !important;
+    color: #007bff !important
+}
+
+.features p {
+    font-size: 150%;
+    color: #379e34;
+    padding: 2%
+}
+
+.features button {
+    width: 40%;
+    margin-left: 30%;
+    font-size: 150%
+}

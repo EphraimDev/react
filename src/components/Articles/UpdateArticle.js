@@ -1,5 +1,6 @@
 import React from 'react';
 import {matchPath} from 'react-router-dom';
+import {storage} from '../../firebase';
 import { Button, Form, FormGroup, Label, Input } from 'reactstrap';
 import '../ContactForm/Contact.css';
 
@@ -15,45 +16,63 @@ export default class Example extends React.Component {
 
   handleChange(evt) {
     evt.preventDefault();
-    this.setState({[evt.target.name]:evt.target.value});
+    if(evt.target.name === 'image') {
+      this.setState({image: evt.target.files[0]})
+    } else {
+      this.setState({[evt.target.name]:evt.target.value});
+    }
   }
 
   handleSubmit(event) {
       event.preventDefault();
-      const target = this.state;
-      let data = {
-        title:target.title,
-        image: target.image,
-        article: target.article
-      }
 
-    let articleId = this.state.articleId;
+      const {image} = this.state;
+        const uploadTask = storage.ref(`images/${image.name}`).put(image);
+      uploadTask.on('state_changed', 
+          (snapshot) => {
+              // progress function
+          },
+          (error) => {
+              // error function
+              console.log(error)
+          },
+          () => {
+              // complete function
+              storage.ref('images').child(image.name).getDownloadURL().then(url => {
+                  this.setState({image:url})
+              })
+              .then(() => {
+                const target = this.state;
 
-      const request = new Request(`https://ephaig-web.herokuapp.com/api/v1/update-article/${articleId}`, {
-        method: 'PUT',
-        headers: new Headers({
-          'Content-Type': 'application/json',
-          'Authorization': localStorage.getItem('x-access-token'),
-        }),
-        mode: 'cors',
-        body: JSON.stringify(data)
-      });
+                let data = {
+                  title:target.title,
+                  image: target.image,
+                  article: target.article
+                }
 
-      fetch(request)
-      .then(res => res.json())
-      .then(data => {
-          this.setState({
-            title: '',
-            image: '',
-            article: '',
-            errorMessage: ''
-          });
-          document.location.replace('/articles');
-      })
-        .catch(err => {
-          console.log(err);
-        })
-        
+              let articleId = this.state.articleId;
+
+              const request = new Request(`https://ephaig-web.herokuapp.com/api/v1/update-article/${articleId}`, {
+                method: 'PUT',
+                headers: new Headers({
+                  'Content-Type': 'application/json',
+                  'Authorization': localStorage.getItem('x-access-token'),
+                }),
+                mode: 'cors',
+                body: JSON.stringify(data)
+              });
+
+              fetch(request)
+              .then(res => res.json())
+              .then(data => {
+                  document.location.replace('/articles');
+              })
+                .catch(err => {
+                  console.log(err);
+                })
+          })
+        });
+      
   }
 
   componentDidMount() {
@@ -76,8 +95,10 @@ export default class Example extends React.Component {
         this.setState({
             title: data.article.title,
             article: data.article.article,
-            articleId: data.article.articleId
-        })
+            articleId: data.article.articleId,
+            image: data.article.image
+        });
+        console.log(this.state.image)
     })
     .catch(err => {
         console.log(err);
@@ -85,7 +106,6 @@ export default class Example extends React.Component {
   }
   render() {
       let title = this.state.title,
-            image = this.state.image,
             article = this.state.article;
     return (
       <Form className="contact-form" >
@@ -96,7 +116,7 @@ export default class Example extends React.Component {
         </FormGroup>
         <FormGroup>
           <Label for="image">Image</Label>
-          <Input className="file-upload" onChange={evt => this.handleChange(evt)} type="file" name="image" accept="image/*" id="image" value={image} />
+          <Input className="file-upload" onChange={evt => this.handleChange(evt)} type="file" name="image" accept="image/*" id="image" />
         </FormGroup>
         <FormGroup>
           <Label for="article">Article</Label>

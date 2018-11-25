@@ -8,11 +8,11 @@ const Cards = (props) => {
   return (
       <Card>
         <CardBody>
-          <CardImg top width="100%" src="https://i.imgur.com/tFCqcHL.jpg" alt="Home Delivery" />
+          <CardImg top width="100%" src="https://i.imgur.com/1ftRMNA.jpg" alt="Training" />
         </CardBody>
         <CardBody>
-          <CardLink href="/">Home Delivery</CardLink>
-          </CardBody>
+        <CardLink href="/training and consultancy">We offer consultancy services to new or existing agriculture entrepreneurs</CardLink>
+        </CardBody>
       </Card>
   );
 };

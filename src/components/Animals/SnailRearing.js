@@ -1,17 +1,15 @@
 import React from 'react';
 import { Card, CardImg, CardLink, CardBody,
-  } from 'reactstrap';
- 
-import './Cards.css';  
+  } from 'reactstrap'; 
 
 const Cards = (props) => {
   return (
       <Card>
         <CardBody>
-          <CardImg top width="100%" src="https://i.imgur.com/1ftRMNA.jpg" alt="Training" />
+          <CardImg top width="100%" src="https://i.imgur.com/z4R8rk7.jpg" alt="Snail" />
         </CardBody>
         <CardBody>
-        <CardLink href="/">Training and Consultancy</CardLink>
+          <CardLink href="/snail rearing">Large scale rearing of snails</CardLink>
         </CardBody>
       </Card>
   );
