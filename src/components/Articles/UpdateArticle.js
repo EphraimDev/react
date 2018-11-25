@@ -25,6 +25,7 @@ export default class Example extends React.Component {
 
   handleSubmit(event) {
       event.preventDefault();
+      document.getElementById("loader").style.display = "block";
 
       const {image} = this.state;
         const uploadTask = storage.ref(`images/${image.name}`).put(image);
@@ -65,7 +66,8 @@ export default class Example extends React.Component {
               fetch(request)
               .then(res => res.json())
               .then(data => {
-                  document.location.replace('/articles');
+                document.getElementById("loader").style.display = "none";
+                document.location.replace('/articles');
               })
                 .catch(err => {
                   console.log(err);

@@ -1,6 +1,7 @@
 import React from 'react';
 import { Col, Row, Button, Form, FormGroup, Label, Input, NavLink } from 'reactstrap';
 import './Register.css';
+import '../Articles/Articles.css';
 
 export default class Register extends React.Component {
     state = {
@@ -19,6 +20,7 @@ export default class Register extends React.Component {
 
   handleSubmit(event) {
       event.preventDefault();
+      document.getElementById("loader").style.display = "block";
       const target = this.state;
       let data = {
         firstname:target.firstname,
@@ -40,7 +42,7 @@ export default class Register extends React.Component {
       fetch(request)
       .then(res => res.json())
       .then(data => {
-        console.log(data);
+        document.getElementById("loader").style.display = "none";
         if(data.message === 'Password must have at least 8 characters, a upper case letter, a number and a special character'){
           return this.setState({errorMessage: 'Password must have at least 8 characters, a upper case letter, a number and a special character'})
         }
@@ -62,7 +64,6 @@ export default class Register extends React.Component {
       })
         .catch(err => {
           console.log(err);
-          return this.setState({error: false})
         })
         
   }

@@ -1,6 +1,7 @@
 import React from 'react';
 import { Button, Form, FormGroup, Label, Input, NavLink, Row, Col } from 'reactstrap';
 import './Login.css';
+import '../Articles/Articles.css';
  
 export default class Login extends React.Component {
   
@@ -17,6 +18,7 @@ export default class Login extends React.Component {
 
   onSubmit(e) {
     e.preventDefault();
+    document.getElementById("loader").style.display = "block";
     const target = this.state;
     let data = {
       email: target.email,
@@ -33,6 +35,7 @@ export default class Login extends React.Component {
       fetch(request)
         .then(res => res.json())
         .then(data => {
+          document.getElementById("loader").style.display = "none";
           if(data.authUser.email === 'admin@wizzyagro.com') {
             this.setState({errorMessage: ""});
             const token = `${data.token}`;
@@ -47,7 +50,7 @@ export default class Login extends React.Component {
               return document.location.replace(`/admin`)
           }
           if(data.message === 'Invalid Credentials') {
-            return this.setState({errorMessage: 'Invalid Credentials'});
+            return this.setState({errorMessage: 'Login details is incorrect'});
           }
           else {
             this.setState({errorMessage: ""});
@@ -65,7 +68,6 @@ export default class Login extends React.Component {
         })
         .catch(err => {
           console.log(err);
-          return this.setState({error: false})
         })
   }
 
@@ -75,7 +77,8 @@ export default class Login extends React.Component {
   render() {
     let errorMessage = this.state.errorMessage;
     return (
-      <Form className="form col-6" >
+      <div>
+        <Form className="form col-6" >
           <h2>Welcome Back</h2>
           <span>{errorMessage}</span>
         <FormGroup>
@@ -108,6 +111,9 @@ export default class Login extends React.Component {
           </Col>
         </Row>
       </Form>
+      <div id="loader" style={{display:"none"}}></div>
+      </div>
+      
     );
   }
 }
