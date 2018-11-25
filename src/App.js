@@ -33,8 +33,6 @@ import Crops from './Pages/Crop';
 import Animals from './Pages/Animal';
 import Consultancy from './Pages/Consultancy';
 
-require('dotenv').config();
-
 class App extends Component {
 
 
