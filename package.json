@@ -32,8 +32,5 @@
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
     "heroku-postbuild": "npm run build"
-  },
-  "devDependencies": {
-    "dotenv": "^6.1.0"
   }
 }
