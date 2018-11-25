@@ -108,7 +108,8 @@ export default class Example extends React.Component {
       let title = this.state.title,
             article = this.state.article;
     return (
-      <Form className="contact-form" >
+      <div>
+        <Form className="contact-form" >
         <div><h3>Write An Article</h3></div>
         <FormGroup>
             <Label for="name">Title</Label>
@@ -124,6 +125,9 @@ export default class Example extends React.Component {
         </FormGroup>
         <Button onClick={(event) => this.handleSubmit(event)}>Submit</Button>
       </Form>
+        <div id="loader" style={{display:"none"}}></div>
+      </div>
+      
     );
   }
 }
