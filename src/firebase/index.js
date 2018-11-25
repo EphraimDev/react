@@ -1,7 +1,7 @@
 import firebase from 'firebase/app';
 import 'firebase/storage';
 
-require('dotenv').config();
+//require('dotenv').config();
 
 // Initialize Firebase
 const config = {

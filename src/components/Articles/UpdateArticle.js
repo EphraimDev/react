@@ -95,10 +95,8 @@ export default class Example extends React.Component {
         this.setState({
             title: data.article.title,
             article: data.article.article,
-            articleId: data.article.articleId,
-            image: data.article.image
+            articleId: data.article.articleId
         });
-        console.log(this.state.image)
     })
     .catch(err => {
         console.log(err);
