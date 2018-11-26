@@ -6,6 +6,9 @@ import Icons from './Icons';
 
 const Profile = (props) => {
     
+    if(localStorage.getItem('email') !== 'admin@wizzyagro.com') {
+        return document.location.replace('/')
+     }
     return (
         <div className="container">
             <div className="sub-container name"><Name /></div>
