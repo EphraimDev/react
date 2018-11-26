@@ -30,3 +30,30 @@
     margin-left: 30%;
     font-size: 150%
 }
+
+@media only screen and (max-device-width: 768px) {
+    .features {
+        background: #ffffff !important;
+        margin-bottom: 10px !important;
+    }
+
+    .features h5 {
+        font-size: 150% !important
+    }
+
+    .features p {
+        margin-bottom: 0;
+        padding-bottom: 0;
+        font-size: 100%
+    }
+
+    .features .card {
+        height: auto;
+        width: 100%
+    }
+
+    .features button {
+        font-size: 130%;
+        line-height: 1
+    }
+}

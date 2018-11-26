@@ -14,7 +14,6 @@ const Profile = (props) => {
             <div className="sub-container name"><UserName /></div>
             <div className="sub-container"><Icons /></div>
             <div className="sub-container"><Products /></div>
-
         </div>
     );
 };

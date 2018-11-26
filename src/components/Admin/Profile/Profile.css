@@ -1,6 +1,11 @@
-.admin-icon{
+.admin-icon {
     width: 25%
 }
+
 .admin-icon div {
     margin-left: 20%
+}
+
+@media only screen and (max-device-width: 768px) {
+    
 }

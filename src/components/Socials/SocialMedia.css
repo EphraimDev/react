@@ -1,18 +1,22 @@
 .connect {
     margin-bottom: 40px
 }
+
 .connect h2 {
     color: #B2ACAD !important;
     font-size: 3rem !important;
     text-align: center !important
 }
+
 .social a {
     font-size: 4.5em;
     padding: 3rem;
 }
+
 .fa-facebook {
     color: #3b5998
 }
+
 .fa-twitter {
     color: #00aced
 }
@@ -20,9 +24,11 @@
 .fa-instagram {
     color: #517fa4
 }
+
 .fa-youtube {
     color: #bb0000
 }
+
 .fa-facebook:hover,
 .fa-twitter:hover,
 .fa-instagram:hover,
@@ -34,6 +40,12 @@
     .connect h2 {
         font-size: 2rem !important
     }
+
+    .social {
+        padding-right: 0 !important;
+        padding-left: 0 !important
+    }
+
     .social a {
         font-size: 3em;
         padding: 2rem

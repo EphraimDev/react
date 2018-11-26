@@ -91,3 +91,40 @@ form span {
     font-size: 150%;
     color: red
 }
+
+@media only screen and (max-device-width: 768px) {
+    .contact-form {
+        width: 90% !important;
+        margin-left: 5% !important
+    }
+
+    .contact-form h3 {
+        font-size: 150% !important
+    }
+
+    form span {
+        font-size: 100%;
+    }
+
+    .contact-form label {
+        font-size: 150% !important
+    }
+
+    .contact-form input {
+        font-size: 150% !important
+    }
+
+    .contact-form button {
+        font-size: 150% !important
+    }
+
+    .article-body {
+        margin: 0;
+        width: 100%
+    }
+
+    .article-body h5,
+    .article-body p {
+        font-size: 150% !important
+    }
+}

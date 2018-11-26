@@ -1,6 +1,7 @@
 a:hover {
     text-decoration: none !important
 }
+
 .container {
     max-width: 100% !important;
     padding-right: 0 !important;
@@ -8,96 +9,198 @@ a:hover {
     margin-right: 0 !important;
     margin-left: 0 !important
 }
+
 .name {
     margin-top: 1%;
 
 }
-.username h3, .username p {
+
+.username h3,
+.username p {
     text-align: center;
     font-size: 200%;
     font-weight: bolder;
     color: black
 }
+
 .username p {
     font-size: 150%
 }
+
 .sub-container .row {
     padding: 0 !important;
     margin: 0 !important
 }
+
 .icon-con {
     padding-top: 20px;
     padding-bottom: 20px;
     width: 33.333%;
     text-align: center
 }
+
 .profile-icon {
     font-size: 6.5em;
     padding: 1rem;
     display: inline-block;
 }
+
 .profile-text {
     font-size: 180%;
     color: #379E34;
     font-weight: bold;
     display: inline-block;
 }
+
 .profile-text:hover {
     color: #ffffff
 }
+
 .fa-user-circle {
     color: #ffffff
 }
+
 .fa-chalkboard-teacher {
     color: #000000
 }
+
 .fa-shopping-cart {
     color: #9936BC
 }
+
 .fa-people-carry {
     color: #CCF918
 }
+
 .fa-truck {
     color: grey
 }
+
 .fa-hand-holding-usd {
     color: #C23838
 }
+
 .modal-profile {
     background-color: #ffffff;
     height: 500px;
 }
+
 .display-orders {
     width: 50%;
 }
+
 .delete-order {
     width: 100%;
     text-align: center;
     font-size: 180%;
     margin-top: 10px
 }
-.display-orders h5, .delete-order h5 {
+
+.display-orders h5,
+.delete-order h5 {
     font-size: 200% !important;
     color: #000000;
     text-align: left
 }
+
 .delete-order h5 {
     font-size: 150% !important;
     text-align: center
 }
+
 .display-orders li {
     font-size: 180%;
     color: #ffffff
 }
-.display-orders a, .delete-order a {
+
+.display-orders a,
+.delete-order a {
     font-size: 70% !important;
     padding-left: 10px;
     color: #379E34
-    
 }
-.display-orders a:hover, .delete-order a:hover {
+
+.display-orders a:hover,
+.delete-order a:hover {
     color: #ffffff
 }
+
 .delete-order a {
     font-size: 100% !important
+}
+
+@media only screen and (max-device-width: 768px) {
+    .username {
+        padding: 0 !important
+    }
+
+    .username h3 {
+        font-size: 150% !important;
+        text-align: center
+    }
+
+    .admin-icons,
+    .sub-container {
+        margin-top: 5px
+    }
+
+    .admin-icon,
+    .icon-con {
+        width: 40% !important;
+        margin-left: 5%;
+        margin-right: 5%;
+        padding: 0 !important
+    }
+
+    .admin-icon div,
+    .icon-con div {
+        margin-left: 0 !important
+    }
+
+    .svg-inline--fa.fa-w-20 {
+        width: 1em
+    }
+
+    .admin-icon .profile-text,
+    .icon-con .profile-text {
+        font-size: 100%
+    }
+
+    .admin-articles {
+        margin-left: 5%;
+        margin-top: 5px;
+        width: auto;
+        max-width: 90%;
+        margin-right: 0
+    }
+
+    .articles-con {
+        padding: 0 !important;
+        margin-top: 5px
+    }
+
+    .articles-con div {
+        padding-left: 0
+    }
+
+    .articles-con h5 {
+        font-size: 200% !important;
+        text-align: center !important
+    }
+
+    #articles ul {
+        padding-left: 0
+    }
+
+    #articles a {
+        font-size: 120%
+    }
+
+    .display-orders {
+        width: 100%
+    }
+
+    .display-orders h5 {
+        font-size: 150% !important
+    }
 }

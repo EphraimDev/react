@@ -18,9 +18,9 @@ class App extends Component {
         <Header />
         <Carousel />
         <Cards />
-        <hr/>
+        <hr className="homepage-hr" />
         <Features />
-        <hr/>
+        <hr className="homepage-hr" />
         <Socials />
         <Footer />
       </div>

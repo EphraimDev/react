@@ -66,7 +66,6 @@
     .card {
         width: 150px;
         height: 150px;
-        margin-left: 20%
     }
 
     .card-body img {
@@ -80,15 +79,19 @@
 
 @media only screen and (max-device-width: 460px) {
     .cards {
-        width: 45% !important;
+        width: 90% !important;
+        margin-left: 5% !important;
         margin-right: 5% !important;
         padding-right: 0 !important;
-        padding-left: 0 !important
+        padding-left: 0 !important;
+    }
+
+    .crops-title {
+        margin-top: 5px
     }
 
     .card {
-        width: 100px;
-        height: 100px;
+        width: 100%;
     }
 
     .card-body img {
@@ -96,6 +99,22 @@
     }
 
     .card-body a {
-        font-size: 150%
+        font-size: 120%
+    }
+
+    .sections {
+        margin-bottom: 0
+    }
+
+    .sections .title {
+        font-size: 70%
+    }
+
+    .sections .cards {
+        margin-top: 10px
+    }
+
+    .homepage-hr {
+        margin-top: 1rem !important
     }
 }
