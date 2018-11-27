@@ -62,7 +62,7 @@ export default class UserName extends React.Component {
                 list.appendChild(textnode);
                 ulTag.appendChild(list)
             }
-        }
+        } 
         return (
             <div className="display-orders" >
                 <div className="col-12" ><h5>Orders(Products, quantity and status)</h5></div>

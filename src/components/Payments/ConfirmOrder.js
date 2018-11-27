@@ -15,6 +15,12 @@ export default class UserName extends React.Component {
             error: ''
         }
 
+        onSubmit(event) {
+            event.preventDefault();
+            localStorage.setItem('amount', this.state.totalAmount)
+            document.location.replace('/paystack');
+        }
+
         handleCancelSubmit(event) {
             event.preventDefault();
       
@@ -123,10 +129,9 @@ export default class UserName extends React.Component {
     render() {
         let product = this.state.product,
         quantity = this.state.quantity,
-        //email = this.state.email,
+        email = this.state.email,
         price =  this.state.price,
         total = this.state.totalAmount,
-        userId = this.state.userId,
         unit = this.state.unit
         return (
             <div>
@@ -136,6 +141,7 @@ export default class UserName extends React.Component {
                     <p>Quantity: {quantity}</p>
                     <p>Price: N{price} per {unit} </p>
                     <p>Total Amount: N{total}</p>
+                    <p>Email: {email}</p>
                     <div className="buttons" ><button onClick={(event) => this.handleCancelSubmit(event)} >Cancel</button> </div>
                 </div>
                 <div className="payment-options" >
@@ -145,7 +151,7 @@ export default class UserName extends React.Component {
                         <p>
                             Click the button below to pay with your debit or credit card
                         </p>
-                        <div className="buttons" ><button>Submit</button></div>
+                        <div className="buttons" ><button onClick={(event) => this.onSubmit(event)}>Submit</button></div>
                     </div>
                     <div>
                         <p style={{fontWeight: "bold"}}>B) Bank Deposit/Transfer</p>

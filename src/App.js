@@ -1,5 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import {BrowserRouter, Route} from 'react-router-dom';
+
 import Landing from './Pages/Landing';
 import Register from './Pages/Register';
 import Login from './Pages/Login';
@@ -33,7 +34,7 @@ import Animals from './Pages/Animal';
 import Consultancy from './Pages/Consultancy';
 import Rabbits from './Pages/Rabbits';
 import Goats from './Pages/Goats';
-//import Service from './Pages/PaymentPage';
+import Paystack from './Pages/PaymentPage';
 
 class App extends Component {
 
@@ -76,6 +77,7 @@ class App extends Component {
           <Route path="/training and consultancy" component={Consultancy} />
           <Route path="/goat rearing" component={Goats} />
           <Route path="/rabbit" component={Rabbits} />
+          <Route path="/paystack" component={Paystack} />
         </Fragment>
       </BrowserRouter>
       

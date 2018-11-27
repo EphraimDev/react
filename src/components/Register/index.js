@@ -69,6 +69,7 @@ export default class Register extends React.Component {
             localStorage.setItem('x-access-token', token);
             localStorage.setItem('firstname', firstname);
             localStorage.setItem('lastname', lastname);
+            localStorage.setItem('email', this.state.email)
             
             document.location.replace(`/user/${userId}`)
         }
