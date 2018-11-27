@@ -9,7 +9,7 @@ const Service = (props) => {
     login = `/${localStorage.getItem('current-user-id')}/order-a-product`
   }
   return (
-    <div>
+    <div> 
       <Card className="card-services">
         <CardBody className="card-body-services">
           <CardTitle>Snail Feed Production</CardTitle>
