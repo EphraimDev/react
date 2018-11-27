@@ -66,6 +66,10 @@
     display: none;
 }
 
+iframe {
+    -webkit-overflow-scrolling: unset
+}
+
 @media only screen and (max-device-width: 768px) {
     .paystack {
         margin-left: 0;

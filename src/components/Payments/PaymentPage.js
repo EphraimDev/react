@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
     //import the library
 import PaystackButton from 'react-paystack';
-import Config from '../../config';
+//import Config from '../../config';
 
 class App extends Component {
 
     state = {
-        key: Config.REACT_APP_PUBLIC_KEY, //PAYSTACK PUBLIC KEY
+        key: process.env.REACT_APP_PUBLIC_KEY, //PAYSTACK PUBLIC KEY
         email: localStorage.getItem('email'),  // customer email
         amount: localStorage.getItem('amount')*100 //equals NGN100,
     }
@@ -45,6 +45,7 @@ class App extends Component {
                 email={this.state.email}
                 amount={this.state.amount}
                 paystackkey={this.state.key}
+                scrolling="no"
                 />
         </div>
     );
