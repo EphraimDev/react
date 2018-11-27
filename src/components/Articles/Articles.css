@@ -95,7 +95,8 @@ form span {
 @media only screen and (max-device-width: 768px) {
     .contact-form {
         width: 90% !important;
-        margin-left: 5% !important
+        margin-left: 5% !important;
+        margin-bottom: 40px
     }
 
     .contact-form h3 {
@@ -115,7 +116,8 @@ form span {
     }
 
     .contact-form button {
-        font-size: 150% !important
+        font-size: 150% !important;
+        margin-left: 20px
     }
 
     .article-body {

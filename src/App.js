@@ -13,7 +13,6 @@ import Plantain from './Pages/Plantain';
 import SnailRearing from './Pages/SnailRearing';
 import SnailFeed from './Pages/SnailFeed';
 import Training from './Pages/Training';
-import HomeDelivery from './Pages/HomeDelivery';
 import Investors from './Pages/Investors';
 import Profile from './Pages/ProfilePage';
 import About from './Pages/About';
@@ -32,6 +31,9 @@ import ConfirmOrder from './Pages/ConfirmOrder';
 import Crops from './Pages/Crop';
 import Animals from './Pages/Animal';
 import Consultancy from './Pages/Consultancy';
+import Rabbits from './Pages/Rabbits';
+import Goats from './Pages/Goats';
+//import Service from './Pages/PaymentPage';
 
 class App extends Component {
 
@@ -51,10 +53,9 @@ class App extends Component {
           <Route path="/orange" component={Orange} />
           <Route path="/pawpaw" component={Pawpaw} />
           <Route path="/plantain" component={Plantain} />
-          <Route path="/snail-rearing" component={SnailRearing} />
-          <Route path="/snail-feed" component={SnailFeed} />
+          <Route path="/snail rearing" component={SnailRearing} />
+          <Route path="/snail feed" component={SnailFeed} />
           <Route path="/training-and-consultancy" component={Training} />
-          <Route path="/home-delivery" component={HomeDelivery} />
           <Route path="/investment-opportunity" component={Investors} />
           <Route path="/user/:userId" component={Profile} />
           <Route path="/about" component={About} />
@@ -73,6 +74,8 @@ class App extends Component {
           <Route path="/crop production" component={Crops} />
           <Route path="/animal rearing" component={Animals} />
           <Route path="/training and consultancy" component={Consultancy} />
+          <Route path="/goat rearing" component={Goats} />
+          <Route path="/rabbit" component={Rabbits} />
         </Fragment>
       </BrowserRouter>
       
