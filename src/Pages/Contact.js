@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 import '../App.css';
 import Header from '../components/Header/Header';
-import Form from '../components/ContactForm';
+import Contact from '../components/ContactForm';
 import Footer from '../components/Footer';
 
 
@@ -13,7 +13,7 @@ class App extends Component {
     return (
       <div>
         <Header />
-        <Form />
+        <Contact />
         <Footer />
       </div>
     );

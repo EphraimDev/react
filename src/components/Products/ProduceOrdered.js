@@ -1,5 +1,4 @@
 import React from 'react';
-import '../Profile/Profile.css';
 
 export default class UserName extends React.Component {
     

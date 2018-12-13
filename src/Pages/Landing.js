@@ -1,13 +1,15 @@
 import React, { Component } from 'react';
 
-import '../App.css';
 import Header from '../components/Header/Header';
-import Carousel from '../components/Carousel/Carousel';
-import Cards from '../components/Cards';
-import Features from '../components/AdditionalFeatures';
-import Socials from '../components/Socials/SocialMedia';
+import Carousel from '../components/Carousel/';
 import Footer from '../components/Footer';
-
+import ServiceSection from '../components/ServiceSection';
+import About from '../components/About';
+import Investment from '../components/Investment';
+import Blog from '../components/Blog';
+import NewsLetter from '../components/NewsLetter';
+import ContactHomePage from '../components/ContactHomePage';
+import Preload from '../components/Preloader';
 
 class App extends Component {
 
@@ -15,13 +17,15 @@ class App extends Component {
   render() {
     return (
       <div>
+        <Preload />
         <Header />
         <Carousel />
-        <Cards />
-        <hr className="homepage-hr" />
-        <Features />
-        <hr className="homepage-hr" />
-        <Socials />
+        <ServiceSection />
+        <About />
+        <Investment />
+        <Blog />
+        <NewsLetter />
+        <ContactHomePage />
         <Footer />
       </div>
     );

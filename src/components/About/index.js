@@ -1,25 +1,66 @@
 import React, { Component } from 'react';
-import { Card, CardImg, CardText, CardBody,
-  CardTitle } from 'reactstrap';
+import Heading from './Heading';
 
-import '../Services/Services.css';
-
-class Slider extends Component {
+class About extends Component {
 
   render() {
       return (
-    <Card className="card-services">
-      <CardBody className="card-body-services">
-        <CardTitle>About Us</CardTitle>
-      </CardBody>
-      <CardBody >
-        <CardImg className="col-lg-6" width="100%" src="https://i.imgur.com/eQEUyNl.jpg" alt="banana"/>
-        <CardText className="col-md-12 col-lg-6">It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy.</CardText>
-      </CardBody>
-    </Card>
+        <section className="about-us-area section-padding-100-0">
+          <div className="container">
+              <div className="row justify-content-between">
+                  <div className="col-12 col-lg-8">
+                    <Heading />
+                    <div className="col-12">
+                    <div className="alazea-benefits-area">
+                    <div className="row">
+                            <div className="col-12 col-sm-6">
+                                <div className="single-benefits-area">
+                                    <img src="img/core-img/b1.png" alt="" />
+                                    <h5>Quality Products</h5>
+                                    <p>We guarantee you the best products money can buy.</p>
+                                </div>
+                            </div>
+
+                            <div className="col-12 col-sm-6">
+                                <div className="single-benefits-area">
+                                    <img src="img/core-img/b2.png" alt="" />
+                                    <h5>Perfect Service</h5>
+                                    <p>You are guaranteed value for your money and time.</p>
+                                </div>
+                            </div>
+
+                            <div className="col-12 col-sm-6">
+                                <div className="single-benefits-area">
+                                    <img src="img/core-img/b3.png" alt="" />
+                                    <h5>100% Natural</h5>
+                                    <p>All our products are hundred percent natural.</p>
+                                </div>
+                            </div>
+
+                            <div className="col-12 col-sm-6">
+                                <div className="single-benefits-area">
+                                    <img src="img/core-img/b4.png" alt="" />
+                                    <h5>Environmentally friendly</h5>
+                                    <p>We will set up your farm to be environmentally friendly</p>
+                                </div>
+                            </div>
+                            </div>
+                    </div>
+                    </div>
+                  </div>
+              </div>
+          </div>
+          <div className="container">
+            <div className="row">
+                <div className="col-12">
+                    <div className="border-line"></div>
+                </div>
+            </div>
+        </div>
+        </section>
     );
   }
 }
 
 
-export default Slider;
+export default About;

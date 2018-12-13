@@ -1,5 +1,4 @@
 import React from 'react';
-import './Payment.css';
 
 export default class UserName extends React.Component {
     

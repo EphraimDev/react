@@ -1,5 +1,4 @@
 import React from 'react';
-import './Consultancy.css';
 
 const Consultancy = (props) => {
     

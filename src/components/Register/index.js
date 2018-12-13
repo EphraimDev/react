@@ -1,7 +1,4 @@
 import React from 'react';
-import { Col, Row, Button, Form, FormGroup, Label, Input, NavLink } from 'reactstrap';
-import './Register.css';
-import '../Articles/Articles.css';
 
 export default class Register extends React.Component {
     state = {
@@ -15,12 +12,32 @@ export default class Register extends React.Component {
 
   handleChange(evt) {
     evt.preventDefault();
-    this.setState({[evt.target.name]:evt.target.value});
+    let target = evt.target;
+      this.setState({
+        [target.name]: target.value},
+        ()=> {
+    const emailRegex = /^([0-9a-zA-Z]([-.\w]*[0-9a-zA-Z])*@(([0-9a-zA-Z])+([-\w]*[0-9a-zA-Z])*\.)+[a-zA-Z]{2,9})$/;
+    const regPass = /^(?=.*?[0-9])(?=.*?[A-Z])(?=.*?[#?!@$%^&*\-_]).{8,}$/;
+          if(target.name === 'email'){
+            if(!emailRegex.test(target.value)) {
+              document.getElementById('email-error').style.display='block'
+            } else {
+              document.getElementById('email-error').style.display='none'
+            }
+          }
+          if(target.name === 'password') {
+            if(!regPass.test(target.value)) {
+              document.getElementById('password-error').style.display='block'
+            } else {
+              document.getElementById('password-error').style.display='none'
+            }
+          }
+        });
   }
 
   handleSubmit(event) {
       event.preventDefault();
-      document.getElementById("loader").style.display = "block";
+      document.getElementById("fetchLoader").style.display = "block";
       const target = this.state;
       let data = {
         firstname:target.firstname,
@@ -39,10 +56,21 @@ export default class Register extends React.Component {
         body: JSON.stringify(data)
       });
 
+      for (const key in data) {
+        if (data.hasOwnProperty(key)) {
+          const element = data[key];
+        if(!element || element.length < 2) {
+          return document.getElementById(`${key}-error`).style.display='block'
+        } else {
+          document.getElementById(`${key}-error`).style.display='none'
+        }
+        }
+      }
+
       fetch(request)
       .then(res => res.json())
       .then(data => {
-        document.getElementById("loader").style.display = "none";
+        document.getElementById("fetchLoader").style.display = "none";
         if(data.message === 'Password must have at least 8 characters, a upper case letter, a number and a special character'){
           return this.setState({errorMessage: 'Password must have at least 8 characters, a upper case letter, a number and a special character',
           firstname: '',
@@ -76,6 +104,10 @@ export default class Register extends React.Component {
       })
         .catch(err => {
           console.log(err);
+          document.getElementById("fetchLoader").style.display = "none";
+          this.setState({
+            errorMessage: "Sign Up wasn't successful"
+          })
         })
         
   }
@@ -86,47 +118,88 @@ export default class Register extends React.Component {
 
 
   render() {
-    let errorMessage = this.state.errorMessage,
-    firstname = this.state.firstname,
-    lastname = this.state.lastname,
-    email = this.state.email,
-    password = this.state.password
-    ;
+    let state = this.state,
+    errorMessage = state.errorMessage,
+    email= state.email,
+    password = state.password,
+    firstname = state.firstname,
+    lastname = state.lastname;
+
     return (
       <div>
-        <Form className="form col-6" >
-        <h2>Register Now</h2>
-        <span>{errorMessage}</span>
-        <FormGroup>
-          <Label for="firstname">First Name</Label>
-          <Input onChange={evt => this.handleChange(evt)} type="text" name="firstname" id="firstName" value={firstname} required />
-        </FormGroup>
-        <FormGroup>
-          <Label for="lastname">Last Name</Label>
-          <Input onChange={evt => this.handleChange(evt)} type="text" name="lastname" id="lastName" value={lastname} required />
-        </FormGroup>
-        <FormGroup>
-          <Label for="email">Email</Label>
-          <Input onChange={evt => this.handleChange(evt)}  type="email" name="email" id="email" value={email} required />
-        </FormGroup>
-        <FormGroup>
-          <Label for="password">Password</Label>
-          <Input onChange={evt => this.handleChange(evt)} type="password" name="password" id="password" value={password} required />
-        </FormGroup> 
-        <FormGroup check>
-          <Input onChange={evt => this.handleChange(evt)} type="checkbox" name="check" id="check"/>
-          <Label for="check" check>Remember Me</Label>
-        </FormGroup>
-        <Button className="button-green" onClick={(event) => this.handleSubmit(event)} block>Register</Button>
-        <Row form>
-          <Col className="login">
-            <FormGroup>
-              <NavLink href="/login">Already have an account?</NavLink>
-            </FormGroup>
-          </Col>
-        </Row>
-      </Form>
-      <div id="loader" style={{display:"none"}}></div>
+        <div className="breadcrumb-area">
+        <div className="top-breadcrumb-area bg-img bg-overlay d-flex align-items-center justify-content-center" style={{backgroundImage: "url(img/bg-img/24.jpg)"}}>
+            <h2>Welcome To The Register Page</h2>
+        </div>
+
+        <div className="container">
+            <div className="row">
+                <div className="col-12">
+                    <nav aria-label="breadcrumb">
+                        <ol className="breadcrumb">
+                            <li className="breadcrumb-item"><a href="./index.html"><i className="fa fa-home"></i> Home</a></li>
+                            <li className="breadcrumb-item active" aria-current="page">Register</li>
+                        </ol>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="fetchLoader" className="fetchLoader align-items-center justify-content-center" style={{display: "none"}}>
+        <div className="preloader-circle"></div>
+        <div className="preloader-img">
+            <img src="img/core-img/leaf.png" alt="" />
+        </div>
+    </div>
+
+    <section className="contact-area">
+        <div className="container">
+            <div className="row align-items-center justify-content-between">
+                <div className="col-12 col-lg-5">
+                    <div className="section-heading">
+                        <h2>Fill in your details</h2>
+                        <span style={{color: "red"}}>{errorMessage}</span>
+                    </div>
+                    <div className="contact-form-area mb-100">
+                        <form>
+                            <div className="row">
+                                <div className="col-12">
+                                    <div className="form-group">
+                                        <input type="text" value={firstname} name="firstname" onChange={evt=>this.handleChange(evt)} className="form-control" id="register-firstname" placeholder="Your First Name" />
+                                        <span id="firstname-error" style={{display: "none", color: "red"}}>First name is required</span>
+                                    </div>
+                                </div>
+                                <div className="col-12">
+                                    <div className="form-group">
+                                        <input type="text" value={lastname} name="lastname" onChange={evt=>this.handleChange(evt)} className="form-control" id="register-lastname" placeholder="Your Last Name" />
+                                        <span id="lastname-error" style={{display: "none", color: "red"}}>Last name is required</span>
+                                    </div>
+                                </div>
+                                <div className="col-12">
+                                    <div className="form-group">
+                                        <input type="email" value={email} name="email" onChange={evt=>this.handleChange(evt)} className="form-control" id="register-email" placeholder="Your Email"/><span id="email-error" style={{display: "none", color: "red"}}>Please crosscheck your email</span>
+                                    </div>
+                                </div>
+                                <div className="col-12">
+                                    <div className="form-group">
+                                        <input type="password" value={password} name="password" onChange={evt=> this.handleChange(evt)} className="form-control" id="register-password" placeholder="Your Password"/><span id="password-error" style={{display: "none", color: "red"}}>Password should be at least 8 characters, with an uppercase, a lowercase, a number and a special character</span>
+                                    </div>
+                                </div>
+                                <div className="col-12">
+                                    <button type="submit" onClick={evt=> this.handleSubmit(evt)} className="btn alazea-btn mt-15">Submit</button>
+                                </div>
+                                <div className="col-12 mt-15">
+                                    <div className="col-6 form-link"><a href="/login" className="mt-15">Have an account
+                                            already?</a></div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+    </div>
+    </section>
       </div>
     );
   }

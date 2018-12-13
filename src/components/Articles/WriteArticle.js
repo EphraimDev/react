@@ -1,7 +1,7 @@
 import React from 'react';
 import {storage} from '../../firebase';
 import { Button, Form, FormGroup, Label, Input } from 'reactstrap';
-import '../ContactForm/Contact.css';
+
 
 export default class Example extends React.Component {
     state = {

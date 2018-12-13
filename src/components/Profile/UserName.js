@@ -13,7 +13,6 @@ export default class UserName extends React.Component {
     
     
     componentDidMount() {
-        console.log('OK')
         let userId = localStorage.getItem('current-user-id');
         const request = new Request(`https://ephaig-web.herokuapp.com/api/v1/user/${userId}`, {
                 headers: new Headers({
@@ -30,7 +29,8 @@ export default class UserName extends React.Component {
                 city: data.profile.city,
                 state: data.profile.state,
                 zip: data.profile.zip
-            })
+            });
+            console.log(document.getElementById('address'))
         })
         .catch(err => {
             console.log(err);
@@ -45,14 +45,14 @@ export default class UserName extends React.Component {
             state = this.state.state,
             city = this.state.city,
             zip = this.state.zip;
+            
+            
         return (
-            <div className="col-12 username" >
-                <div><h3>Welcome, {firstname} {lastname}</h3></div>
-                <div>
-                    <p>{address}, {city}, {state}</p>
-                </div>
-                <div>
-                    <p>{zip}</p>
+            <div className="breadcrumb-area">
+                <div className="top-breadcrumb-area bg-img bg-overlay d-flex align-items-center justify-content-center" style={{backgroundImage: "url(../img/bg-img/50.jpg)"}}>
+                    <h2>{firstname} {lastname}</h2>
+                    <h5 id="address" style={{display: "none"}}>{address}, {city}, {state}</h5>
+                    <h6>{zip}</h6>
                 </div>
             </div>
             

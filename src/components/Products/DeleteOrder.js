@@ -1,6 +1,5 @@
 import React from 'react';
 import {matchPath} from 'react-router-dom';
-import '../Profile/Profile.css';
 
 export default class UserName extends React.Component {
     

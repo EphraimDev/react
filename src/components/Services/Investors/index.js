@@ -1,7 +1,6 @@
 import React from 'react';
 import { Card, CardImg, CardText, CardBody, CardLink,
   CardTitle } from 'reactstrap';
-import '../Services.css';
 
 const Service = (props) => {
   let login = '/login';

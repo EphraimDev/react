@@ -1,3 +1,12 @@
+import React from 'react';
 import Articles from '../../Articles/GetAllArticles';
 
-export default Articles 
+class RecentArticles extends React.Component {
+    render() {
+        return (
+            <Articles />
+        )
+    }
+}
+
+export default RecentArticles 

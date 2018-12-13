@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import '../App.css';
 import Header from '../components/Header/Header';
 import Footer from '../components/Footer';
-import Article from '../components/Articles/GetAnRticle';
+import GetArticle from '../components/Articles/GetAnRticle';
 
 
 class App extends Component { 
@@ -13,7 +13,7 @@ class App extends Component {
     return (
       <div>
         <Header />
-        <Article />
+        <GetArticle />
         <Footer />
       </div>
     );

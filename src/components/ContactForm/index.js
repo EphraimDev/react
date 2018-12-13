@@ -1,6 +1,5 @@
 import React from 'react';
-import { Button, Form, FormGroup, Label, Input } from 'reactstrap';
-import './Contact.css';
+import Contact from '../ContactHomePage';
 
 export default class Example extends React.Component {
     state = {
@@ -60,26 +59,27 @@ export default class Example extends React.Component {
   }
   render() {
     return (
-      <Form className="contact-form" >
-        <div><h3>Contact Us</h3></div>
-        <FormGroup>
-            <Label for="name">Name</Label>
-            <Input onChange={evt => this.handleChange(evt)} type="text" name="name" id="name" />
-        </FormGroup>
-        <FormGroup>
-          <Label for="phoneNumber">Phone Number</Label>
-          <Input onChange={evt => this.handleChange(evt)} type="text" name="phoneNumber" id="phoneNuber" />
-        </FormGroup>
-        <FormGroup>
-          <Label for="email">Email</Label>
-          <Input onChange={evt => this.handleChange(evt)} type="email" name="email" id="email"  />
-        </FormGroup>
-        <FormGroup>
-          <Label for="message">Message</Label>
-          <Input onChange={evt => this.handleChange(evt)} type="textarea" rows="6" name="message" id="message" />
-        </FormGroup>
-        <Button onClick={(event) => this.handleSubmit(event)}>Submit</Button>
-      </Form>
+      <div>
+        <div className="breadcrumb-area">
+        <div className="top-breadcrumb-area bg-img bg-overlay d-flex align-items-center justify-content-center" style={{backgroundImage: "url(img/bg-img/24.jpg)"}}>
+            <h2>Contact Us</h2>
+        </div>
+
+        <div className="container">
+            <div className="row">
+                <div className="col-12">
+                    <nav aria-label="breadcrumb">
+                        <ol className="breadcrumb">
+                            <li className="breadcrumb-item"><a href="./index.html"><i className="fa fa-home"></i> Home</a></li>
+                            <li className="breadcrumb-item active" aria-current="page">Login</li>
+                        </ol>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+    <Contact />
+      </div>
     );
   }
 }

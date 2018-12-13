@@ -1,7 +1,6 @@
 import React from 'react';
 import { Button, Form, FormGroup, Label, Input } from 'reactstrap';
 
-import '../Login/Login.css';
 
 export default class Verify extends React.Component {
 

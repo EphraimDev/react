@@ -1,7 +1,4 @@
 import React from 'react';
-import { Button, Form, FormGroup, Label, Input, NavLink, Row, Col } from 'reactstrap';
-import './Login.css';
-import '../Articles/Articles.css';
  
 export default class Login extends React.Component {
   
@@ -13,12 +10,32 @@ export default class Login extends React.Component {
 
     handleChange(evt) {
       evt.preventDefault();
-      this.setState({[evt.target.name]:evt.target.value});
+      let target = evt.target;
+      this.setState({
+        [target.name]: target.value},
+        ()=> {
+    const emailRegex = /^([0-9a-zA-Z]([-.\w]*[0-9a-zA-Z])*@(([0-9a-zA-Z])+([-\w]*[0-9a-zA-Z])*\.)+[a-zA-Z]{2,9})$/;
+    const regPass = /^(?=.*?[0-9])(?=.*?[A-Z])(?=.*?[#?!@$%^&*\-_]).{8,}$/;
+          if(target.name === 'email'){
+            if(!emailRegex.test(target.value)) {
+              document.getElementById('email-error').style.display='block'
+            } else {
+              document.getElementById('email-error').style.display='none'
+            }
+          }
+          if(target.name === 'password') {
+            if(!regPass.test(target.value)) {
+              document.getElementById('password-error').style.display='block'
+            } else {
+              document.getElementById('password-error').style.display='none'
+            }
+          }
+        });
     }
 
   onSubmit(e) {
     e.preventDefault();
-    document.getElementById("loader").style.display = "block";
+  document.getElementById("fetchLoader").style.display = "block";
     const target = this.state;
     let data = {
       email: target.email,
@@ -32,10 +49,22 @@ export default class Login extends React.Component {
         body: JSON.stringify(data)
       });
 
+      for (const key in data) {
+        if (data.hasOwnProperty(key)) {
+          const element = data[key];
+        if(!element || element.length < 2) {
+          return document.getElementById(`${key}-error`).style.display='block'
+        } else {
+          document.getElementById(`${key}-error`).style.display='none'
+        }
+        }
+      }
+
       fetch(request)
         .then(res => res.json())
         .then(data => {
-          document.getElementById("loader").style.display = "none";
+          console.log(data)
+          document.getElementById("fetchLoader").style.display = "none";
           if(data.authUser.email === 'admin@wizzyagro.com') {
             this.setState({errorMessage: ""});
             const token = `${data.token}`;
@@ -73,6 +102,7 @@ export default class Login extends React.Component {
         })
         .catch(err => {
           console.log(err);
+          document.getElementById("fetchLoader").style.display = "none";
           return this.setState({
             errorMessage: 'Login was not successful, kindly try again',
             email: '',
@@ -82,48 +112,80 @@ export default class Login extends React.Component {
   }
 
   componentDidMount() {
-    console.log('Component has mounted');
   }
   render() {
-    let errorMessage = this.state.errorMessage,
-    email = this.state.email,
-    password = this.state.password;
+    let state = this.state,
+    errorMessage = state.errorMessage,
+    email= state.email,
+    password = state.password;
+
     return (
       <div>
-        <Form className="form col-6" >
-          <h2>Welcome Back</h2>
-          <span>{errorMessage}</span>
-        <FormGroup>
-          <Label for="email">Email</Label>
-          <Input type="email" value={email} onChange={evt => this.handleChange(evt)} name="email" id="email" placeholder="" required />
-        </FormGroup> 
-        <FormGroup>
-          <Label for="password">Password</Label>
-          <Input type="password" value={password} onChange={evt => this.handleChange(evt)} name="password" id="password" placeholder="" required />
-        </FormGroup>
-        <Row form>
-          <Col md={6}> 
-          <FormGroup check>
-            <Input type="checkbox" name="check" id="check"/>
-            <Label for="check" check>Remember Me</Label>
-          </FormGroup>
-          </Col>
-          <Col md={6}>
-            <FormGroup>
-              <NavLink href="/forgot-password">Forgot password?</NavLink>
-            </FormGroup>
-          </Col>
-        </Row>
-        <Button className="button-green" block onClick={(event) => this.onSubmit(event)}>Submit</Button>
-        <Row form>
-          <Col md={6} className="login">
-            <FormGroup>
-              <NavLink href="/register">Don't have an account?</NavLink>
-            </FormGroup>
-          </Col>
-        </Row>
-      </Form>
-      <div id="loader" style={{display:"none"}}></div>
+        <div className="breadcrumb-area">
+        <div className="top-breadcrumb-area bg-img bg-overlay d-flex align-items-center justify-content-center" style={{backgroundImage: "url(img/bg-img/24.jpg)"}}>
+            <h2>Log in to your account, we miss you</h2>
+        </div>
+
+        <div className="container">
+            <div className="row">
+                <div className="col-12">
+                    <nav aria-label="breadcrumb">
+                        <ol className="breadcrumb">
+                            <li className="breadcrumb-item"><a href="./index.html"><i className="fa fa-home"></i> Home</a></li>
+                            <li className="breadcrumb-item active" aria-current="page">Login</li>
+                        </ol>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="fetchLoader" className="fetchLoader align-items-center justify-content-center" style={{display: "none"}}>
+        <div className="preloader-circle"></div>
+        <div className="preloader-img">
+            <img src="img/core-img/leaf.png" alt="" />
+        </div>
+    </div>
+    
+
+    <section className="contact-area">
+        <div className="container">
+            <div className="row align-items-center justify-content-between">
+                <div className="col-12 col-lg-5">
+                    <div className="section-heading">
+                        <h2>Welcome Back</h2>
+                        <span style={{color: "red"}}>{errorMessage}</span>
+                    </div>
+                    <div className="contact-form-area mb-100">
+                        <form>
+                            <div className="row">
+                                <div className="col-12">
+                                    <div className="form-group">
+                                        <input type="email" value={email} onChange={evt => this.handleChange(evt)} name="email" className="form-control" id="login-email" placeholder="Your Email"/><span id="email-error" style={{display: "none", color: "red"}}>Please crosscheck your email</span>
+                                    </div>
+                                </div>
+                                <div className="col-12">
+                                    <div className="form-group">
+                                        <input type="password" value={password} onChange={evt => this.handleChange(evt)} name="password" className="form-control" id="login-password" placeholder="Your Password" /><span id="password-error" style={{display: "none", color: "red"}}>Password should be at least 8 characters, with an uppercase, a lowercase, a number and a special character</span>
+                                    </div>
+                                </div>
+                                <div className="col-12">
+                                    <button type="submit" onClick={e => this.onSubmit(e)} className="btn alazea-btn mt-15">Submit</button>
+                                </div>
+                                <div className="col-12 mt-15">
+                                    <div className="col-6 form-link"><a href="/forgot-password" className="mt-15">Forgot
+                                            password?</a></div>
+                                    <div className="col-6 form-link"><a href="/register" className="mt-15">New to
+                                            WizzyAgro?</a></div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+    </div>
+    
+    </section>
       </div>
       
     );
