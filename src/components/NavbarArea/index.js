@@ -56,7 +56,7 @@ export default class Example extends React.Component {
         <div className="classy-nav-container">
             <div className="container">
             <Navbar className="classy-navbar justify-content-between" id="alazeaNav" light expand="md">
-          <NavbarBrand className="nav-brand" href="/"><img src="../img/bg-img/wizzy_logod.jpg" alt="" /></NavbarBrand>
+          <NavbarBrand className="nav-brand" href="/"><img src="../img/bg-img/untitled.png" alt="" /></NavbarBrand>
           <NavbarToggler onClick={this.toggle}>
             <span className="navbarToggler"><span></span><span></span><span></span></span>
                         

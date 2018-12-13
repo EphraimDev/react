@@ -11,7 +11,7 @@ const Footer = (props) => {
                     <div className="col-12 col-sm-6 col-lg-4">
                         <div className="single-footer-widget">
                             <div className="footer-logo mb-30">
-                                <a href="/" className="footer-nav-brand">WIZZYAGRO</a>
+                                <a href="/" className="footer-nav-brand"><img src="../img/bg-img/untitled.png" alt="" /></a>
                             </div>
                             <p>Feeding nations</p>
                             <div className="social-info">

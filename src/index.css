@@ -328,9 +328,8 @@ img {
   z-index: 200;
 }
 
-.footer-nav-brand {
-  font-size: 20px;
-  color: #ffffff
+.footer-nav-brand img {
+  height: 150px;
 }
 
 .preloader .preloader-img img,
@@ -501,6 +500,11 @@ img {
 @media only screen and (min-width: 768px) and (max-width: 991px) {
   .header-area .top-header-area {
     z-index: 1;
+  }
+
+  .nav-brand img {
+    height: 0 !important;
+    width: 0 !important;
   }
 }
 
@@ -678,7 +682,7 @@ li.dropdown.nav-item {
 }
 
 .nav-brand img {
-  height: 70px;
+  height: 150px;
   width: auto
 }
 
