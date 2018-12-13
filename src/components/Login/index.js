@@ -35,7 +35,7 @@ export default class Login extends React.Component {
 
   onSubmit(e) {
     e.preventDefault();
-  document.getElementById("fetchLoader").style.display = "block";
+  document.getElementById("login").style.display = "block";
     const target = this.state;
     let data = {
       email: target.email,
@@ -63,8 +63,7 @@ export default class Login extends React.Component {
       fetch(request)
         .then(res => res.json())
         .then(data => {
-          console.log(data)
-          document.getElementById("fetchLoader").style.display = "none";
+          document.getElementById("login").style.display = "none";
           if(data.authUser.email === 'admin@wizzyagro.com') {
             this.setState({errorMessage: ""});
             const token = `${data.token}`;
@@ -102,7 +101,7 @@ export default class Login extends React.Component {
         })
         .catch(err => {
           console.log(err);
-          document.getElementById("fetchLoader").style.display = "none";
+          document.getElementById("login").style.display = "none";
           return this.setState({
             errorMessage: 'Login was not successful, kindly try again',
             email: '',
@@ -140,11 +139,8 @@ export default class Login extends React.Component {
         </div>
     </div>
 
-    <div id="fetchLoader" className="fetchLoader align-items-center justify-content-center" style={{display: "none"}}>
-        <div className="preloader-circle"></div>
-        <div className="preloader-img">
-            <img src="img/core-img/leaf.png" alt="" />
-        </div>
+    <div id="login" style={{display: "none", textAlign: "center"}}>
+        Loading....
     </div>
     
 

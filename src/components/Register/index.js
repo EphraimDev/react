@@ -37,7 +37,7 @@ export default class Register extends React.Component {
 
   handleSubmit(event) {
       event.preventDefault();
-      document.getElementById("fetchLoader").style.display = "block";
+      document.getElementById("register").style.display = "block";
       const target = this.state;
       let data = {
         firstname:target.firstname,
@@ -70,7 +70,7 @@ export default class Register extends React.Component {
       fetch(request)
       .then(res => res.json())
       .then(data => {
-        document.getElementById("fetchLoader").style.display = "none";
+        document.getElementById("register").style.display = "none";
         if(data.message === 'Password must have at least 8 characters, a upper case letter, a number and a special character'){
           return this.setState({errorMessage: 'Password must have at least 8 characters, a upper case letter, a number and a special character',
           firstname: '',
@@ -80,7 +80,7 @@ export default class Register extends React.Component {
         })
         }
         if(!data.success) {
-          document.getElementById("loader").style.display = "none";
+          document.getElementById("register").style.display = "none";
           return this.setState({errorMessage: "Crosscheck your data",
           firstname: '',
           lastname: '',
@@ -104,7 +104,7 @@ export default class Register extends React.Component {
       })
         .catch(err => {
           console.log(err);
-          document.getElementById("fetchLoader").style.display = "none";
+          document.getElementById("register").style.display = "none";
           this.setState({
             errorMessage: "Sign Up wasn't successful"
           })
@@ -145,12 +145,9 @@ export default class Register extends React.Component {
             </div>
         </div>
     </div>
-
-    <div id="fetchLoader" className="fetchLoader align-items-center justify-content-center" style={{display: "none"}}>
-        <div className="preloader-circle"></div>
-        <div className="preloader-img">
-            <img src="img/core-img/leaf.png" alt="" />
-        </div>
+ 
+    <div id="register" style={{display: "none", textAlign: "center"}}>
+        Loading....
     </div>
 
     <section className="contact-area">

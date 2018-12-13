@@ -50,6 +50,9 @@ class Slider extends Component {
   }
 
   componentDidMount() {
+    if(localStorage.getItem('x-access-token')) {
+      document.getElementById('register-button').style.display = 'none'
+    }
     }
 
   render() {
@@ -73,7 +76,7 @@ class Slider extends Component {
                                     with a long line of success. We will take your farm from scratch and turn it to
                                     money making machine. We can work with your budget. </p>
                                 <div className="welcome-btn-group">
-                                    <a href="/register" className="btn alazea-btn mr-30">GET STARTED</a>
+                                    <a id="register-button" href="/register" className="btn alazea-btn mr-30">GET STARTED</a>
                                     <a href="/contact" className="btn alazea-btn active">CONTACT US</a>
                                 </div>
                             </div>
