@@ -11,7 +11,7 @@ const preloader = () => {
     const preload = document.getElementById('preloader');
     preload.classList.add('hide-preload');
 }
-browserWindow.setTimeout(preloader, 5000);
+browserWindow.setTimeout(preloader, 1000);
     }
 
     render() {

@@ -109,13 +109,13 @@ export default class EditProfile extends React.Component {
                                 </div>
                                 <div className="col-12">
                                     <div className="form-group">
-                                        <input type="text" name="citye" onChange={evt=>this.handleChange(evt)} className="form-control" id="edit-profile-city" placeholder="Your City" />
+                                        <input type="text" name="city" onChange={evt=>this.handleChange(evt)} className="form-control" id="edit-profile-city" placeholder="Your City" />
                                         <span id="city-error" style={{display: "none", color: "red"}}>City is required</span>
                                     </div>
                                 </div>
                                 <div className="col-12">
                                     <div className="form-group">
-                                        <input type="text" name="address" onChange={evt=>this.handleChange(evt)} className="form-control" id="edit-profile-state" placeholder="Your State"/>
+                                        <input type="text" name="state" onChange={evt=>this.handleChange(evt)} className="form-control" id="edit-profile-state" placeholder="Your State"/>
                                         <span id="state-error" style={{display: "none", color: "red"}}>State is required</span>
                                     </div>
                                 </div>

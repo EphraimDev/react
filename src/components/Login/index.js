@@ -130,7 +130,7 @@ export default class Login extends React.Component {
                 <div className="col-12">
                     <nav aria-label="breadcrumb">
                         <ol className="breadcrumb">
-                            <li className="breadcrumb-item"><a href="./index.html"><i className="fa fa-home"></i> Home</a></li>
+                            <li className="breadcrumb-item"><a href="/"><i className="fa fa-home"></i> Home</a></li>
                             <li className="breadcrumb-item active" aria-current="page">Login</li>
                         </ol>
                     </nav>

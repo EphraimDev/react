@@ -91,8 +91,8 @@ function stickyHeader() {
           <Route path="/:orderId/update" component={UpdateOrder} />
           <Route path="/:orderId/delete" component={DeleteOrder} />
           <Route path="/confirm-order" component={ConfirmOrder} />
-          <Route path="/crop production" component={Crops} />
-          <Route path="/animal rearing" component={Animals} />
+          <Route path="/crops" component={Crops} />
+          <Route path="/rearing of animals" component={Animals} />
           <Route path="/training and consultancy" component={Consultancy} />
           <Route path="/goat rearing" component={Goats} />
           <Route path="/rabbit" component={Rabbits} />

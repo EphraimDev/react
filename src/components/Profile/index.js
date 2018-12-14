@@ -9,7 +9,6 @@ const Profile = (props) => {
     if(!localStorage.getItem('x-access-token')) {
         document.location.replace(`/login`);
     }
-    console.log(document.getElementById('address'))
     return (
         <div>
             <UserName />

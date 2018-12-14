@@ -72,7 +72,7 @@ export default class Example extends React.Component {
                                 <div className="post-content">
                                 <h4 className="post-title">{title}</h4>
                                 <div className="post-meta mb-30">
-                                    <a href="#"><i className="fa fa-clock-o" aria-hidden="true"></i> {date}</a>
+                                    <a><i className="fa fa-clock-o" aria-hidden="true"></i> {date}</a>
                                 </div>
                                 <div className="post-thumbnail mb-30">
                                     <img src={image} alt="" />
@@ -82,10 +82,10 @@ export default class Example extends React.Component {
                             </div>
                             <div className="post-tags-share d-flex justify-content-between align-items-center">
                             <div className="post-share">
-                                <a href="#"><i className="fa fa-facebook" aria-hidden="true"></i></a>
-                                <a href="#"><i className="fa fa-twitter" aria-hidden="true"></i></a>
-                                <a href="#"><i className="fa fa-google-plus" aria-hidden="true"></i></a>
-                                <a href="#"><i className="fa fa-instagram" aria-hidden="true"></i></a>
+                                <a href="/"><i className="fa fa-facebook" aria-hidden="true"></i></a>
+                                <a href="/"><i className="fa fa-twitter" aria-hidden="true"></i></a>
+                                <a href="/"><i className="fa fa-google-plus" aria-hidden="true"></i></a>
+                                <a href="/"><i className="fa fa-instagram" aria-hidden="true"></i></a>
                             </div>
                         </div>
                         </div>

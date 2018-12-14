@@ -217,6 +217,18 @@ img {
   margin: auto;
   margin-bottom: 10px;
   border-radius: 5px;
+  padding-left: 0 !important;
+  padding-right: 0 !important
+}
+
+.user-address {
+  background-color: #567d46;
+  width: 100%
+}
+
+.user-address h5,
+.user-address h6 {
+  padding: 10px
 }
 
 .user-profile-section:hover {
@@ -3155,35 +3167,10 @@ li.dropdown.nav-item {
   text-transform: uppercase;
 }
 
-.breadcrumb-area .top-breadcrumb-area h6,
-.breadcrumb-area .top-breadcrumb-area h5 {
-  position: absolute;
-  top: 300px;
-  transform: translate(-50%, -50%);
-  color: #ffffff;
-  margin-bottom: 0;
-  line-height: 1;
-  text-transform: uppercase;
-}
-
-.breadcrumb-area .top-breadcrumb-area h5 {
-  top: 280px;
-}
-
 @media only screen and (max-width: 767px) {
   .breadcrumb-area .top-breadcrumb-area h2 {
     margin-top: 80px;
     font-size: 30px;
-  }
-
-  .breadcrumb-area .top-breadcrumb-area h6 {
-    top: 200px;
-    font-size: 10px
-  }
-
-  .breadcrumb-area .top-breadcrumb-area h5 {
-    top: 180px;
-    font-size: 15px
   }
 }
 

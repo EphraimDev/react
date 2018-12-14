@@ -1,18 +1,23 @@
 import React from 'react';
-import { Card, CardImg, CardLink, CardBody,
-  } from 'reactstrap'; 
 
 const CardOne = (props) => {
   return (
-      <Card>
-        <CardBody>
-          <CardImg top width="100%" src="https://i.imgur.com/eQEUyNl.jpg" alt="banana" />
-        </CardBody>
-        <CardBody>
-          <CardLink href="/banana">Banana Plantation</CardLink>
-          </CardBody>
-      </Card>
+
+<div className="col-12 col-md-6 col-lg-4">
+<div className="single-blog-post mb-100">
+    <div className="post-thumbnail mb-30">
+        <a href="/banana"><img src="https://i.imgur.com/eQEUyNl.jpg" alt="" /></a>
+    </div>
+    <div className="post-content">
+        <a href="/" className="post-title">
+            <h5>Banana Plantaintion</h5>
+        </a>
+        <p className="post-excerpt">We can supply you bunches of banana, banana suckers or nurture your banana farm for you.</p>
+    </div>
+</div>
+</div>
   );
 };
 
 export default CardOne;
+

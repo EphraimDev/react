@@ -1,17 +1,20 @@
 import React from 'react';
-import { Card, CardImg, CardLink, CardBody,
-  } from 'reactstrap'; 
 
 const Cards = (props) => {
   return (
-      <Card>
-        <CardBody>
-          <CardImg top width="100%" src="https://i.imgur.com/z4R8rk7.jpg" alt="Snail" />
-        </CardBody>
-        <CardBody>
-          <CardLink href="/snail rearing">Large scale rearing of snails</CardLink>
-        </CardBody>
-      </Card>
+      <div className="col-12 col-md-6 col-lg-4">
+      <div className="single-blog-post mb-100">
+          <div className="post-thumbnail mb-30">
+              <a href="/banana"><img src="https://i.imgur.com/z4R8rk7.jpg" alt="" /></a>
+          </div>
+          <div className="post-content">
+              <a href="/" className="post-title">
+                  <h5>Rearing of Snails</h5>
+              </a>
+              <p className="post-excerpt">We can supply you as many snails as you need. We will also help you set up your snail farm</p>
+          </div>
+      </div>
+      </div>
   );
 };
 

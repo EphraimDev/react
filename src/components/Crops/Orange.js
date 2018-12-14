@@ -1,18 +1,21 @@
 import React from 'react';
-import { Card, CardImg, CardLink, CardBody,
-  } from 'reactstrap';
  
 
 const Cardfive = (props) => {
   return (
-      <Card>
-        <CardBody>
-          <CardImg top width="100%" src="https://i.imgur.com/CGeTokH.jpg" alt="Orange" />
-        </CardBody>
-        <CardBody>
-          <CardLink href="/orange">Orange Farming</CardLink>
-          </CardBody>
-      </Card>
+      <div className="col-12 col-md-6 col-lg-4">
+      <div className="single-blog-post mb-100">
+          <div className="post-thumbnail mb-30">
+              <a href="single-post.html"><img src="https://i.imgur.com/CGeTokH.jpg" alt="Orange" /></a>
+          </div>
+          <div className="post-content">
+              <a href="/" className="post-title">
+                  <h5>Orange Farming</h5>
+              </a>
+              <p className="post-excerpt">Get your orange seedlings and fruits from us. We can also develop your orange farm</p>
+          </div>
+      </div>
+  </div>
   );
 };
 

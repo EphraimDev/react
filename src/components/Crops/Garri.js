@@ -1,17 +1,20 @@
 import React from 'react';
-import { Card, CardImg, CardLink, CardBody,
-  } from 'reactstrap'; 
 
 const CardThree = (props) => {
   return (
-      <Card>
-        <CardBody>
-          <CardImg top width="100%" src="https://i.imgur.com/lhHygao.jpg" alt="Garri Production" />
-        </CardBody>
-        <CardBody>
-          <CardLink href="/garri">Garri Production</CardLink>
-          </CardBody>
-      </Card>
+      <div className="col-12 col-md-6 col-lg-4">
+      <div className="single-blog-post mb-100">
+          <div className="post-thumbnail mb-30">
+              <a href="single-post.html"><img src="https://i.imgur.com/lhHygao.jpg" alt="" /></a>
+          </div>
+          <div className="post-content">
+              <a href="/" className="post-title">
+                  <h5>Garri Production</h5>
+              </a>
+              <p className="post-excerpt">Let us handle your garri supplies. We have more than enough to meet your demands</p>
+          </div>
+      </div>
+  </div>
   );
 };
 

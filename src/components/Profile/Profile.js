@@ -8,6 +8,10 @@ class Profile extends Component {
         training: '',
         products: '',
         investment: '',
+        address: '',
+        city: '',
+        state: '',
+        zip: ''
     }
 
 
@@ -27,13 +31,13 @@ componentDidMount() {
                 products: data.profile.products_services,
                 training: data.profile.training_consultancy,
                 investment: data.profile.investment,
-                zip: data.profile.zip
-            }, () => {
-                
-         if(this.state.address !== '') {
-            document.getElementById('address').style.display = 'block';
-         }
-            })
+                zip: data.profile.zip,
+                address: data.profile.address,
+                city: data.profile.city,
+                state: data.profile.state,
+            });
+            let place = this.state.address;
+            !place ? document.getElementById('address').style.display = 'none' : document.getElementById('address').style.display = 'block'
         })
         .catch(err => {
             console.log(err);
@@ -48,14 +52,25 @@ componentDidMount() {
        let userId = localStorage.getItem('current-user-id'),
        training = this.state.training,
        product = this.state.products,
+        address = this.state.address,
+           state = this.state.state,
+           city = this.state.city,
+           zip = this.state.zip,
        investment = this.state.investment;
+
         return (
             <section className="blog-content-area section-padding-0-100 user-profile-section col-12 col-md-8">
+            
+            <div className="user-address" id="address" style={{display: "none"}}>
+                        <h5 style={{color: "#ffffff"}}><span style={{fontWeight: "bold"}}>Address:</span> {address}, {city}, {state}</h5>
+                        <h6 style={{color: "#ffffff"}}><span style={{fontWeight: "bold"}}>Zip:</span> {zip}</h6>
+                        </div>
                 <div className="container">
                     <div className="row justify-content-center">
                         <div className="col-12">
                     <div className="alazea-benefits-area">
                     <div className="row">
+                    
                             <div className="col-12 col-sm-6">
                                 <div className="single-benefits-area">
                                     <div className="col-3">
