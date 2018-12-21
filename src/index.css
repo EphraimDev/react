@@ -172,6 +172,11 @@ img {
   padding-top: 0
 }
 
+.order-product-service {
+  margin-right: auto;
+  margin-left: auto
+}
+
 .fa-chalkboard-teacher {
   color: #000000
 }
@@ -341,7 +346,7 @@ img {
 }
 
 .footer-nav-brand img {
-  height: 150px;
+  height: 70px;
 }
 
 .preloader .preloader-img img,
@@ -448,6 +453,10 @@ img {
 }
 
 /* :: 3.8.0 alazea Button */
+.order-button {
+  margin-right: 10%
+}
+
 .alazea-btn {
   -webkit-transition-duration: 400ms;
   transition-duration: 400ms;
@@ -694,7 +703,7 @@ li.dropdown.nav-item {
 }
 
 .nav-brand img {
-  height: 150px;
+  height: 70px;
   width: auto
 }
 
@@ -703,7 +712,10 @@ li.dropdown.nav-item {
     height: 70px;
   }
 
-
+  .nav-brand img {
+    height: 50px;
+    width: auto
+  }
 }
 
 .header-area .alazea-main-menu .classynav ul li a {
@@ -2899,7 +2911,7 @@ li.dropdown.nav-item {
 .footer-area .main-footer-area {
   position: relative;
   z-index: 1;
-  padding-top: 80px;
+  padding-top: 30px;
 }
 
 .footer-area .single-footer-widget {
@@ -3187,6 +3199,33 @@ li.dropdown.nav-item {
   font-size: 16px;
   color: #b7b7b7;
   text-transform: capitalize;
+}
+
+.contain {
+  position: relative;
+  text-align: center;
+  color: white;
+}
+
+.contain img {
+  height: 750px;
+}
+
+.not-found {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.not-found a {
+  color: #b7b7b7;
+  font-size: 20px;
+  font-weight: 700
+}
+
+.not-found a:hover {
+  color: #000000
 }
 
 .breadcrumb-area .breadcrumb .breadcrumb-item a {

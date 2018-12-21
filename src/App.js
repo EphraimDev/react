@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from 'react';
-import {BrowserRouter, Route} from 'react-router-dom';
+import {BrowserRouter, Route, Switch} from 'react-router-dom';
 
 import Landing from './Pages/Landing';
 import Register from './Pages/Register';
@@ -35,34 +35,39 @@ import Consultancy from './Pages/Consultancy';
 import Rabbits from './Pages/Rabbits';
 import Goats from './Pages/Goats';
 import Paystack from './Pages/PaymentPage';
+import NotFound from './components/NotFound'
 
 class App extends Component {
 
   componentDidMount() {
-    // When the user scrolls the page, execute myFunction 
-window.onscroll = function() {stickyHeader()};
 
-// Get the header
-var header = document.getElementsByClassName("sticky-wrapper");
+    // Get the header
+    var header = document.getElementsByClassName("sticky-wrapper");
 
-// Get the offset position of the navbar
-var sticky = header[0].offsetTop;
+    // Get the offset position of the navbar
+    if(!!header === false) {
+      var sticky = header[0].offsetTop;
+      
+      // When the user scrolls the page, execute myFunction 
+      window.onscroll = function() {stickyHeader()};
+    }
+    
 
-// Add the sticky class to the header when you reach its scroll position. Remove "sticky" when you leave the scroll position
-function stickyHeader() {
-  if (window.pageYOffset > sticky) {
-    header[0].classList.add("is-sticky");
-  } else {
-    header[0].classList.remove("is-sticky");
-  }
-}
+    // Add the sticky class to the header when you reach its scroll position. Remove "sticky" when you leave the scroll position
+    function stickyHeader() {
+      if (window.pageYOffset > sticky) {
+        header[0].classList.add("is-sticky");
+      } else {
+        header[0].classList.remove("is-sticky");
+      }
+    }
   }
 
   render() {
     return (
       
       <BrowserRouter>
-        <Fragment>
+        <Switch>
           <Route exact path="/" component={Landing} />
           <Route path="/register" component={Register} />
           <Route path="/login" component={Login} />
@@ -90,14 +95,15 @@ function stickyHeader() {
           <Route path="/:userId/order-a-product" component={NewOrder} />
           <Route path="/:orderId/update" component={UpdateOrder} />
           <Route path="/:orderId/delete" component={DeleteOrder} />
-          <Route path="/confirm-order" component={ConfirmOrder} />
+          <Route path="/confirm-order/:orderId" component={ConfirmOrder} />
           <Route path="/crops" component={Crops} />
           <Route path="/rearing of animals" component={Animals} />
           <Route path="/training and consultancy" component={Consultancy} />
           <Route path="/goat rearing" component={Goats} />
           <Route path="/rabbit" component={Rabbits} />
           <Route path="/paystack" component={Paystack} />
-        </Fragment>
+          <Route path="*" component={NotFound} />
+        </Switch>
       </BrowserRouter>
       
     );

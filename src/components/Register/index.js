@@ -1,4 +1,11 @@
 import React from 'react';
+import { setToken } from '../Auth/SetToken';
+import { register } from '../Auth/Register';
+import { validateRegistration } from '../Validation/Register';
+import { validateState } from '../Validation/State';
+import token from '../Auth/GetToken';
+import { loggedIn } from '../Auth/LoggedIn';
+import { getProfile } from '../Auth/GetProfile';
 
 export default class Register extends React.Component {
     state = {
@@ -9,35 +16,20 @@ export default class Register extends React.Component {
         errorMessage: '',
     };
 
-
   handleChange(evt) {
     evt.preventDefault();
     let target = evt.target;
       this.setState({
         [target.name]: target.value},
-        ()=> {
-    const emailRegex = /^([0-9a-zA-Z]([-.\w]*[0-9a-zA-Z])*@(([0-9a-zA-Z])+([-\w]*[0-9a-zA-Z])*\.)+[a-zA-Z]{2,9})$/;
-    const regPass = /^(?=.*?[0-9])(?=.*?[A-Z])(?=.*?[#?!@$%^&*\-_]).{8,}$/;
-          if(target.name === 'email'){
-            if(!emailRegex.test(target.value)) {
-              document.getElementById('email-error').style.display='block'
-            } else {
-              document.getElementById('email-error').style.display='none'
-            }
-          }
-          if(target.name === 'password') {
-            if(!regPass.test(target.value)) {
-              document.getElementById('password-error').style.display='block'
-            } else {
-              document.getElementById('password-error').style.display='none'
-            }
-          }
-        });
+        () => validateState(target.name, target.value)
+    );
   }
 
-  handleSubmit(event) {
+ async handleSubmit(event) {
       event.preventDefault();
       document.getElementById("register").style.display = "block";
+
+      
       const target = this.state;
       let data = {
         firstname:target.firstname,
@@ -46,75 +38,33 @@ export default class Register extends React.Component {
         password: target.password
       }
 
+      const validate = await validateRegistration(data);
 
-      const request = new Request('https://ephaig-web.herokuapp.com/api/v1/register-user', {
-        method: 'POST',
-        headers: new Headers({
-          'Content-Type': 'application/json',
-        }),
-        mode: 'cors',
-        body: JSON.stringify(data)
-      });
+      const userInfo = await register(data.firstname, data.lastname, data.email, data.password)
 
-      for (const key in data) {
-        if (data.hasOwnProperty(key)) {
-          const element = data[key];
-        if(!element || element.length < 2) {
-          return document.getElementById(`${key}-error`).style.display='block'
-        } else {
-          document.getElementById(`${key}-error`).style.display='none'
-        }
-        }
-      }
-
-      fetch(request)
-      .then(res => res.json())
-      .then(data => {
+      if(!!validate === false && !!userInfo === true) {
         document.getElementById("register").style.display = "none";
-        if(data.message === 'Password must have at least 8 characters, a upper case letter, a number and a special character'){
-          return this.setState({errorMessage: 'Password must have at least 8 characters, a upper case letter, a number and a special character',
-          firstname: '',
-          lastname: '',
-          email: '',
-          password: ''
-        })
-        }
-        if(!data.success) {
-          document.getElementById("register").style.display = "none";
-          return this.setState({errorMessage: "Crosscheck your data",
-          firstname: '',
-          lastname: '',
-          email: '',
-          password: ''
-        });
-        } else {
-          this.setState({errorMessage: ""});
-            const token = `${data.token}`;
-            const userId = `${data.userId}`;
-            const firstname = `${data.firstname}`;
-            const lastname = `${data.lastname}`;
-            localStorage.setItem('current-user-id', userId);
-            localStorage.setItem('x-access-token', token);
-            localStorage.setItem('firstname', firstname);
-            localStorage.setItem('lastname', lastname);
-            localStorage.setItem('email', this.state.email)
-            
-            document.location.replace(`/user/${userId}`)
-        }
-      })
-        .catch(err => {
-          console.log(err);
-          document.getElementById("register").style.display = "none";
-          this.setState({
-            errorMessage: "Sign Up wasn't successful"
-          })
-        })
-        
+        let userId = userInfo.userId;
+       await setToken(userInfo.token);
+       
+        document.location.replace(`/user/${userId}`)
+      } else if (!!validate === true) {
+        document.getElementById("register").style.display = "none";
+          return validate
+      } else if (!!userInfo === false) {
+        document.getElementById("register").style.display = "none";
+            this.setState({
+                errorMessage: 'Registration was unsuccessful'
+            })
+      }
   }
 
-  componentDidMount() {
-    console.log('Component has mounted');
-  }
+  async componentWillMount() {
+    if(!!loggedIn()) {
+        let profile = await getProfile(token)
+        document.location.replace(`/user/${profile.id}`)
+    }
+}
 
 
   render() {

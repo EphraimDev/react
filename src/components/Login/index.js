@@ -1,4 +1,11 @@
 import React from 'react';
+import { loginUser } from '../Auth/Login';
+import { validateRegistration } from '../Validation/Register';
+import { setToken } from '../Auth/SetToken';
+import { validateState } from '../Validation/State';
+import { loggedIn } from '../Auth/LoggedIn';
+import { getProfile } from '../Auth/GetProfile';
+import token from '../Auth/GetToken';
  
 export default class Login extends React.Component {
   
@@ -12,28 +19,15 @@ export default class Login extends React.Component {
       evt.preventDefault();
       let target = evt.target;
       this.setState({
-        [target.name]: target.value},
-        ()=> {
-    const emailRegex = /^([0-9a-zA-Z]([-.\w]*[0-9a-zA-Z])*@(([0-9a-zA-Z])+([-\w]*[0-9a-zA-Z])*\.)+[a-zA-Z]{2,9})$/;
-    const regPass = /^(?=.*?[0-9])(?=.*?[A-Z])(?=.*?[#?!@$%^&*\-_]).{8,}$/;
-          if(target.name === 'email'){
-            if(!emailRegex.test(target.value)) {
-              document.getElementById('email-error').style.display='block'
-            } else {
-              document.getElementById('email-error').style.display='none'
-            }
-          }
-          if(target.name === 'password') {
-            if(!regPass.test(target.value)) {
-              document.getElementById('password-error').style.display='block'
-            } else {
-              document.getElementById('password-error').style.display='none'
-            }
-          }
-        });
+        [target.name]: target.value
+      },
+      ()=> {
+        validateState(target.name, target.value)
+      }
+      );
     }
 
-  onSubmit(e) {
+ async onSubmit(e) {
     e.preventDefault();
   document.getElementById("login").style.display = "block";
     const target = this.state;
@@ -42,76 +36,34 @@ export default class Login extends React.Component {
       password: target.password
     }
 
-    const request = new Request('https://ephaig-web.herokuapp.com/api/v1/login', {
-        method: 'POST',
-        headers: new Headers({'Content-Type': 'application/json'}),
-        mode: 'cors',
-        body: JSON.stringify(data)
-      });
+    const validate = await validateRegistration(data);
 
-      for (const key in data) {
-        if (data.hasOwnProperty(key)) {
-          const element = data[key];
-        if(!element || element.length < 2) {
-          return document.getElementById(`${key}-error`).style.display='block'
-        } else {
-          document.getElementById(`${key}-error`).style.display='none'
-        }
-        }
+    const login = await loginUser(data.email, data.password);
+    
+    if(!!validate === false && !!login === true ) {
+        document.getElementById("login").style.display = "none";
+        let userId = login.authUser.userId;
+        await setToken(login.token);
+        
+        document.location.replace(`/user/${userId}`)
+    } else if (!!validate === true ) {
+      document.getElementById("login").style.display = "none";
+      return validate
+    } else {
+      document.getElementById("login").style.display = "none";
+        this.setState({
+            errorMessage: 'Login was not successful, kindly try again'
+        })
+    }
+  }
+
+ async componentWillMount() {
+      if(!!loggedIn()) {
+          let profile = await getProfile(token)
+          document.location.replace(`/user/${profile.id}`)
       }
-
-      fetch(request)
-        .then(res => res.json())
-        .then(data => {
-          document.getElementById("login").style.display = "none";
-          if(data.authUser.email === 'admin@wizzyagro.com') {
-            this.setState({errorMessage: ""});
-            const token = `${data.token}`;
-            const userId = `${data.authUser.userId}`;
-            const firstname = `${data.authUser.firstname}`;
-            const email = data.authUser.email;
-            localStorage.setItem('x-access-token', token);
-            localStorage.setItem('firstname', firstname);
-            localStorage.setItem('current-user-id', userId);
-            localStorage.setItem('email', email);
-            
-              return document.location.replace(`/admin`)
-          }
-          if(data.message === 'Invalid Credentials') {
-            return this.setState({
-              errorMessage: 'Login details is incorrect',
-              email: '',
-              password: ''
-            });
-          }
-          else {
-            this.setState({errorMessage: ""});
-            const token = `${data.token}`;
-            const userId = `${data.authUser.userId}`;
-            const firstname = `${data.authUser.firstname}`;
-            const lastname = `${data.authUser.lastname}`;
-            localStorage.setItem('current-user-id', userId);
-            localStorage.setItem('x-access-token', token);
-            localStorage.setItem('firstname', firstname);
-            localStorage.setItem('lastname', lastname);
-            localStorage.setItem('email', this.state.email)
-            
-              document.location.replace(`/user/${userId}`)
-          }
-        })
-        .catch(err => {
-          console.log(err);
-          document.getElementById("login").style.display = "none";
-          return this.setState({
-            errorMessage: 'Login was not successful, kindly try again',
-            email: '',
-            password: ''
-          });
-        })
   }
 
-  componentDidMount() {
-  }
   render() {
     let state = this.state,
     errorMessage = state.errorMessage,

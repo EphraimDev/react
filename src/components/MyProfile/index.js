@@ -1,4 +1,7 @@
 import React from 'react';
+import { getProfile } from '../Auth/GetProfile';
+import token from '../Auth/GetToken';
+import { editProfile } from '../Auth/EditProfile';
 
 export default class EditProfile extends React.Component {
     state = {
@@ -15,7 +18,7 @@ export default class EditProfile extends React.Component {
     this.setState({[evt.target.name]:evt.target.value})
   }
 
-    handleSubmit(event) {
+   async handleSubmit(event) {
       event.preventDefault();
       document.getElementById('edit-profile').style.display="block"
       const target = this.state;
@@ -26,40 +29,14 @@ export default class EditProfile extends React.Component {
         zip: target.zip
       }
 
-      let userId = localStorage.getItem('current-user-id');
-      const request = new Request(`https://ephaig-web.herokuapp.com/api/v1/user/${userId}/edit-profile`, {
-        method: 'PUT',
-        headers: new Headers({
-            'Content-Type': 'application/json',
-            'Authorization': localStorage.getItem('x-access-token')
-        }),
-        mode: 'cors',
-        body: JSON.stringify(data)
-      });
+      const profile = await getProfile(token)
 
-      fetch(request)
-      .then(res => res.json())
-      .then(data => {
-        document.getElementById('edit-profile').style.display='none';
-          if(data.message !== 'Successful') {
-            this.setState({errorMessage: 'Try again'})
-            console.log(data.message)
-          } else {
-            document.location.replace(`/user/${userId}`);
-          }
-      })
-        .catch(err => {
-          document.getElementById('edit-profile').style.display='none';
-          console.log(err);
-          return this.setState({error: false})
-        })
-        
+      const edit = await editProfile(profile.id, data)
+
+      document.getElementById('edit-profile').style.display='none';
+
+      !!edit === false ? this.setState({errorMessage: 'Try again'}) : document.location.replace(`/user/${profile.id}`)        
   }
-
-  componentDidMount() {
-    console.log('Component has mounted');
-  }
-
 
   render() {
     let state = this.state,

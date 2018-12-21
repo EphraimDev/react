@@ -1,4 +1,7 @@
 import React from 'react';
+import { confirmOrder, cancelOrder } from '../Auth/ConfirmOrder';
+import { getProfile } from '../Auth/GetProfile';
+import token from '../Auth/GetToken';
 
 export default class UserName extends React.Component {
     
@@ -16,113 +19,52 @@ export default class UserName extends React.Component {
 
         onSubmit(event) {
             event.preventDefault();
-            localStorage.setItem('amount', this.state.totalAmount)
+            localStorage.setItem('amount', this.state.totalAmount);
+            localStorage.setItem('email', this.state.email)
             document.location.replace('/paystack');
         }
 
-        handleCancelSubmit(event) {
+        async handleCancelSubmit(event) {
             event.preventDefault();
       
             let orderId = this.state.productsId;
-            let userId = localStorage.getItem('current-user-id')
-      
-            const request = new Request(`https://ephaig-web.herokuapp.com/api/v1/order/${orderId}`, {
-              method: 'DELETE',
-              headers: new Headers({
-                'Authorization': localStorage.getItem('x-access-token'),
-              })
-            });
-      
-            fetch(request)
-            .then(res => res.json())
-            .then(data => {
-                if(data.message !== 'Order has been canceled') {
-                    this.setState({
-                        errorMessage: data.message
-                    })
-                } else {
-                    this.setState({
-                        product: '',
-                        address: '',
-                        quatity: '',
-                        comment: '',
-                        errorMessage: ''
-                      });
-                      document.location.replace(`/${userId}/order-a-product`)
-                }
-               
-            })
-              .catch(err => {
-                console.log(err);
-              })
-              
+
+            let stopOrder = await cancelOrder(orderId);
+
+            if(!!stopOrder === true) {
+                this.setState({
+                    product: '',
+                    productsId: '',
+                    address: '',
+                    quantity: '',
+                    price: '',
+                    comment: '',
+                    errorMessage: ''
+                  });
+                  localStorage.removeItem('order-id')
+                  document.location.replace(`/${this.state.userId}/order-a-product`)
+            } 
         }
     
-    componentDidMount() {
+   async componentDidMount() {
         let orderId = localStorage.getItem('order-id');
-        const request = new Request(`https://ephaig-web.herokuapp.com/api/v1/${orderId}`, {
-            headers: new Headers({
-              'Authorization': localStorage.getItem('x-access-token'),
-            })
-        });
-    
-        fetch(request)
-        .then(res => res.json())
-        .then(data => {
-            if(data.message !== "Successful") {
-                this.setState({
-                    error: data.message
-                })
-            } else {
-                this.setState({
-                    product: data.order.product,
-                    quantity: data.order.quatity,
-                    email: localStorage.getItem('email'),
-                    productsId: data.order.productsId,
-                    userId: localStorage.getItem('current-user-id')
-                })
 
-                if(this.state.product === 'Banana Plantation' || this.state.product === 'Plantain Plantation') {
-                    this.setState({
-                        price: 1000,
-                        unit: 'bunch'
-                    })
-                }else if(this.state.product === 'Garri Production') {
-                    this.setState({
-                        price: 800
-                    })
-                }else if(this.state.product === 'Pepper Farming') {
-                    this.setState({
-                        price: 700
-                    })
-                }else if(this.state.product === 'Snail Farming') {
-                    this.setState({
-                        price: 500
-                    })
-                }else if(this.state.product === 'Snail Feed Production') {
-                    this.setState({
-                        price: 3000
-                    })
-                }else if(this.state.product === 'Oil Palm Farming') {
-                    this.setState({
-                        price: 10000
-                    })
-                }else  {
-                    this.setState({
-                        price: 200
-                    })
-                
-                }
-                this.setState({
-                    totalAmount: this.state.price * this.state.quantity
-                })
-                
-            }
-            
-        })
-        .catch(err => {
-            console.log(err);
-        })
+        let profile = await getProfile(token)
+
+        let orderData = await confirmOrder(orderId);
+
+        if(!!orderData === true) {
+            this.setState({
+                product: orderData.order.product,
+                quantity: orderData.order.quantity,
+                email: profile.email,
+                price: orderData.order.price,
+                unit: orderData.order.unit,
+                productsId: orderData.order.productsId,
+                userId: profile.id,
+                totalAmount: orderData.order.amount
+            })
+        }
         
     }
     render() {
@@ -134,31 +76,46 @@ export default class UserName extends React.Component {
         unit = this.state.unit
         return (
             <div>
-                <div className="confirm-order" >
-                    <div className="title" >Confirm order page</div>
-                    <p>Service: {product}</p>
-                    <p>Quantity: {quantity}</p>
-                    <p>Price: N{price} per {unit} </p>
-                    <p>Total Amount: N{total}</p>
-                    <p>Email: {email}</p>
-                    <div className="buttons" ><button onClick={(event) => this.handleCancelSubmit(event)} >Cancel</button> </div>
-                </div>
-                <div className="payment-options" >
-                    <div><h6>Payment Options</h6></div>
-                    <div>
-                        <p style={{fontWeight: "bold"}} >A) Online Payment</p>
-                        <p>
-                            Click the button below to pay with your debit or credit card
-                        </p>
-                        <div className="buttons" ><button onClick={(event) => this.onSubmit(event)}>Submit</button></div>
-                    </div>
-                    <div>
-                        <p style={{fontWeight: "bold"}}>B) Bank Deposit/Transfer</p>
-                        <p>
-                            You can also pay by direct deposit / internet or mobile banking transfer to either of the following account numbers
-                        </p>
+                <div className="breadcrumb-area">
+                    <div className="top-breadcrumb-area bg-img bg-overlay d-flex align-items-center justify-content-center" style={{backgroundImage: "url(../img/bg-img/50.jpg)"}}>
+                        <h2>Order Confirmation Page</h2>
                     </div>
                 </div>
+                <section className="blog-content-area section-padding-100 order-product-service col-12 col-md-8">
+                    <div className="container">
+                        <div className="row justify-content-center">
+                            <div className="col-12">
+                                <div className="alazea-benefits-area">
+                                    <div className="confirm-order" >
+                                        <h5>Service: {product}</h5>
+                                        <h5>Quantity: {quantity}</h5>
+                                        <h5>Price: N{price} per {unit} </h5>
+                                        <h5>Total Amount: N{total}</h5>
+                                        <h5>Email: {email}</h5>
+                                        <div className="buttons" ><button type="button" className="alazea-btn m-15 order-button" onClick={(event) => this.handleCancelSubmit(event)} >Cancel</button> </div>
+                                    </div>
+                                    <div className="payment-options" >
+                                        <div><h6>Payment Options</h6></div>
+                                        <div>
+                                            <p style={{fontWeight: "bold"}} >A) Online Payment</p>
+                                            <p>
+                                                Click the button below to pay with your debit or credit card
+                                            </p>
+                                            <div className="buttons" ><button type="button" className="alazea-btn m-15 order-button" onClick={(event) => this.onSubmit(event)}>Submit</button></div>
+                                        </div>
+                                        <div>
+                                            <p style={{fontWeight: "bold"}}>B) Bank Deposit/Transfer</p>
+                                            <p>
+                                                You can also pay by direct deposit / internet or mobile banking transfer to either of the following account numbers
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                
             </div>
             
         )
